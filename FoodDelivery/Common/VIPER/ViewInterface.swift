@@ -2,17 +2,17 @@ import UIKit
 //import SVProgressHUD
 
 protocol ViewInterface: class {
-//    func showProgressHUD()
-//    func hideProgressHUD()
+    func showProgressHUD()
+    func hideProgressHUD()
 }
 
 extension ViewInterface {
 
-//    func showProgressHUD() {
+    func showProgressHUD() {
 //        SVProgressHUD.show()
-//    }
-//
-//    func hideProgressHUD() {
+    }
+
+    func hideProgressHUD() {
 //        SVProgressHUD.dismiss()
-//    }
+    }
 }

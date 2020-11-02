@@ -1,5 +1,16 @@
 PODS:
   - Alamofire (5.0.2)
+  - Differentiator (4.0.1)
+  - JGProgressHUD (2.0.4)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya-ObjectMapper/Core (2.9):
+    - Moya (~> 14.0.0-beta.6)
+    - ObjectMapper
+  - Moya-ObjectMapper/RxSwift (2.9):
+    - Moya-ObjectMapper/Core
+    - Moya/RxSwift
+    - RxSwift
   - Moya/Core (14.0.0):
     - Alamofire (~> 5.0)
   - Moya/RxSwift (14.0.0):
@@ -9,33 +20,54 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxDataSources (4.0.1):
+    - Differentiator (~> 4.0)
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
 
 DEPENDENCIES:
-  - Moya/RxSwift (~> 14.0)
-  - ObjectMapper (~> 4.2.0)
-  - RxCocoa (~> 5)
-  - RxSwift (~> 5)
+  - JGProgressHUD (~> 2.0.3)
+  - Moya-ObjectMapper/RxSwift
+  - Moya/RxSwift
+  - ObjectMapper
+  - RxCocoa
+  - RxDataSources (~> 4.0)
+  - RxSwift
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Differentiator
+    - JGProgressHUD
     - Moya
+    - Moya-ObjectMapper
     - ObjectMapper
     - RxCocoa
+    - RxDataSources
     - RxRelay
     - RxSwift
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  JGProgressHUD: 62658b14e72cccf179efc7a13bcb54d30b92fc22
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
 
-PODFILE CHECKSUM: 66b1e3440df60619e51c591564eb9eec5b9f5f0b
+PODFILE CHECKSUM: 732dcd89a7777b58cc0884c66b27520e7689b968
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.0
