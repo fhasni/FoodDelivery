@@ -31,7 +31,7 @@
 		2CACE57B254F3E7F0088620D /* Category+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57A254F3E7F0088620D /* Category+ObjectMapper.swift */; };
 		2CACE57D254F3EAF0088620D /* Dish+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57C254F3EAF0088620D /* Dish+ObjectMapper.swift */; };
 		2CACE57F254F41510088620D /* StubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57E254F41510088620D /* StubRepository.swift */; };
-		2CACE581254F55010088620D /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE580254F55010088620D /* DishTableViewCell.swift */; };
+		2CACE581254F55010088620D /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE580254F55010088620D /* DishCell.swift */; };
 		2CACE583254F60C10088620D /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE582254F60C10088620D /* UIView+RoundCorners.swift */; };
 		2CACE586254F72700088620D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE585254F72700088620D /* CardView.swift */; };
 		2CACE588254F98520088620D /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE587254F98520088620D /* UIColor+AppColors.swift */; };
@@ -56,7 +56,7 @@
 		2CB93CA8254A51C00063E22F /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93CA1254A51C00063E22F /* HomeInteractor.swift */; };
 		2CB93CA9254A51C00063E22F /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93CA2254A51C00063E22F /* HomeWireframe.swift */; };
 		2CCA1525254620D0003B81C2 /* FoodMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA1524254620D0003B81C2 /* FoodMenuView.swift */; };
-		2CCA152725462BFC003B81C2 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA152625462BFC003B81C2 /* CategoryCollectionViewCell.swift */; };
+		2CCA152725462BFC003B81C2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA152625462BFC003B81C2 /* CategoryCell.swift */; };
 		544C1B887776998DFA91EC6E /* Pods_FoodDeliveryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA1A3AEA41D33E100EAC4CC /* Pods_FoodDeliveryTests.framework */; };
 		A7BEDE478214A82500890B21 /* Pods_FoodDelivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F34F33687F14AC259FAF84 /* Pods_FoodDelivery.framework */; };
 		B686AA09D91633737F4C71EB /* Pods_FoodDelivery_FoodDeliveryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1714AA176BD0F2180565E275 /* Pods_FoodDelivery_FoodDeliveryUITests.framework */; };
@@ -112,7 +112,7 @@
 		2CACE57A254F3E7F0088620D /* Category+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+ObjectMapper.swift"; sourceTree = "<group>"; };
 		2CACE57C254F3EAF0088620D /* Dish+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+ObjectMapper.swift"; sourceTree = "<group>"; };
 		2CACE57E254F41510088620D /* StubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRepository.swift; sourceTree = "<group>"; };
-		2CACE580254F55010088620D /* DishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
+		2CACE580254F55010088620D /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		2CACE582254F60C10088620D /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		2CACE585254F72700088620D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2CACE587254F98520088620D /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		2CB93CA1254A51C00063E22F /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		2CB93CA2254A51C00063E22F /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		2CCA1524254620D0003B81C2 /* FoodMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuView.swift; sourceTree = "<group>"; };
-		2CCA152625462BFC003B81C2 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		2CCA152625462BFC003B81C2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		5911DA3754B90ACC9DFC38D9 /* Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodDelivery-FoodDeliveryUITests/Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6AA1A3AEA41D33E100EAC4CC /* Pods_FoodDeliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDeliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9EE9F4A54A81CEE03BE8CC /* Pods-FoodDeliveryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDeliveryTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodDeliveryTests/Pods-FoodDeliveryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 		2CAFC1F22544C9AE00625BC3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2CCA152325460EBF003B81C2 /* RestaurentsView */,
+				2CCA152325460EBF003B81C2 /* FoodMenuView */,
 				2CAFC1F12544C99A00625BC3 /* PromotionsView */,
 			);
 			path = Views;
@@ -455,14 +455,14 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		2CCA152325460EBF003B81C2 /* RestaurentsView */ = {
+		2CCA152325460EBF003B81C2 /* FoodMenuView */ = {
 			isa = PBXGroup;
 			children = (
 				2CCA1524254620D0003B81C2 /* FoodMenuView.swift */,
-				2CCA152625462BFC003B81C2 /* CategoryCollectionViewCell.swift */,
-				2CACE580254F55010088620D /* DishTableViewCell.swift */,
+				2CCA152625462BFC003B81C2 /* CategoryCell.swift */,
+				2CACE580254F55010088620D /* DishCell.swift */,
 			);
-			path = RestaurentsView;
+			path = FoodMenuView;
 			sourceTree = "<group>";
 		};
 		DCAF422B490F4562FE582C95 /* Pods */ = {
@@ -750,12 +750,12 @@
 				2CACE57B254F3E7F0088620D /* Category+ObjectMapper.swift in Sources */,
 				2CACE579254F3BA50088620D /* Dish.swift in Sources */,
 				2C0742FE2545A593002BE22A /* RestaurentMenuService.swift in Sources */,
-				2CACE581254F55010088620D /* DishTableViewCell.swift in Sources */,
+				2CACE581254F55010088620D /* DishCell.swift in Sources */,
 				2CB93C96254A513D0063E22F /* RestaurentDetailsInterfaces.swift in Sources */,
 				2CACE57D254F3EAF0088620D /* Dish+ObjectMapper.swift in Sources */,
 				2CB93CA5254A51C00063E22F /* HomePresenter.swift in Sources */,
 				2C0742FC2545A18E002BE22A /* RemoteRepository.swift in Sources */,
-				2CCA152725462BFC003B81C2 /* CategoryCollectionViewCell.swift in Sources */,
+				2CCA152725462BFC003B81C2 /* CategoryCell.swift in Sources */,
 				2CB93CA7254A51C00063E22F /* HomeFormatter.swift in Sources */,
 				2CACE57F254F41510088620D /* StubRepository.swift in Sources */,
 				2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */,

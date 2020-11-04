@@ -11,7 +11,6 @@ target 'FoodDelivery' do
   pod 'Moya/RxSwift'
   pod 'ObjectMapper'
   pod 'Moya-ObjectMapper/RxSwift'
-  pod 'RxDataSources', '~> 4.0'
   pod 'SDWebImage', '~> 5.0'
   pod 'JGProgressHUD', '~>2.0.3'
   

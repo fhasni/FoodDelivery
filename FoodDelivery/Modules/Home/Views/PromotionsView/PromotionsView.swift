@@ -27,7 +27,9 @@ final class PromotionsView: UIView {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.backgroundColor = .none
+        collectionView.backgroundColor = .black
+        collectionView.contentInset = UIEdgeInsets(top:0, left: 0, bottom: 0, right: 0)
+        collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.contentOffset = .zero
@@ -100,19 +102,19 @@ extension PromotionsView: UICollectionViewDataSource {
 
         cell.addSubview(imageView)
         imageView.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.bottomAnchor, right: cell.rightAnchor)
-        
+        cell.backgroundColor = .systemIndigo
         return cell
     }
 }
 
 extension PromotionsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+        return CGSize(width: frame.width, height: frame.height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: -40, left: 0, bottom: 0, right: 0)
+//    }
 
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,

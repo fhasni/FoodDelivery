@@ -19,6 +19,7 @@ extension Dish: Mappable {
         id              <- map["id"]
         name            <- map["name"]
         image           <- map["image"]
+        price           <- map["price"]
         description     <- map["description"]
     }
 }

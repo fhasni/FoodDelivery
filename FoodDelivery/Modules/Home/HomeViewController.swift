@@ -13,13 +13,13 @@ import RxSwift
 import RxCocoa
 
 final class HomeViewController: UIViewController {
-
+    
     // MARK: - Public properties -
-
+    
     var presenter: HomePresenterInterface!
-
+    
     // MARK: - Private properties -
-
+    
     private lazy var promotionsView: PromotionsView = {
         let view = PromotionsView()
         view.presenter = self.presenter
@@ -27,22 +27,21 @@ final class HomeViewController: UIViewController {
     }()
     
     private lazy var foodMenuView : FoodMenuView = {
-        let view = FoodMenuView()
+        let view = FoodMenuView(presenter: presenter)
         view.presenter = self.presenter
         return view
     }()
     
     private let disposeBag = DisposeBag()
-
+    
     
     // MARK: - Lifecycle -
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
         setupView()
     }
-
+    
 }
 
 // MARK: - Extensions -
@@ -51,30 +50,23 @@ extension HomeViewController: HomeViewInterface {
 }
 
 private extension HomeViewController {
-
+    
     func setupView() {
         let output = Home.ViewOutput()
-
-        let input = presenter.configure(with: output)
-        
-        input.menu.subscribe({ (event) in
-            switch event {
-            case .success(let menu):
-                print("DEBUG: Data loaded successfuly: \(menu?.categories?.count)")
-            case .error(let error):
-                print("DEBUG: Error while loading data: \(error.localizedDescription)")
-            }
-        }).disposed(by: disposeBag)
+        _ = presenter.configure(with: output)
+        configureUI()
     }
-
-    func configureUI () {
+    
+    func configureUI() {
         configureNavigationBar()
-                
-        view.addSubview(promotionsView)
-        promotionsView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: -22 , height: 22+55)
         
+        view.addSubview(promotionsView)
+        promotionsView.anchor(top: view.topAnchor, left: view.leftAnchor,
+                              right: view.rightAnchor, height: 22+55+700)
+                
         view.addSubview(foodMenuView)
-        foodMenuView.anchor(top: promotionsView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: -55 , height: view.frame.height)
+        foodMenuView.anchor(top: view.topAnchor, left: view.leftAnchor,
+                            bottom: view.bottomAnchor, right: view.rightAnchor)
     }
     
     func configureNavigationBar() {
