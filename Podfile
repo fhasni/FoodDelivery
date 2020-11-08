@@ -8,6 +8,7 @@ target 'FoodDelivery' do
   # Pods for FoodDelivery
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod "RxGesture"
   pod 'Moya/RxSwift'
   pod 'ObjectMapper'
   pod 'Moya-ObjectMapper/RxSwift'

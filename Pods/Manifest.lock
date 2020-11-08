@@ -19,6 +19,9 @@ PODS:
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxGesture (3.0.2):
+    - RxCocoa (~> 5.1)
+    - RxSwift (~> 5.1)
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
@@ -32,6 +35,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - ObjectMapper
   - RxCocoa
+  - RxGesture
   - RxSwift
   - SDWebImage (~> 5.0)
 
@@ -43,6 +47,7 @@ SPEC REPOS:
     - Moya-ObjectMapper
     - ObjectMapper
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
     - SDWebImage
@@ -54,10 +59,11 @@ SPEC CHECKSUMS:
   Moya-ObjectMapper: 967a99d9ea3aa9c93ddbe112aeca3667f53bfe93
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxGesture: d6bd7447ca3a596c7a9702a6a2b6a2bb5d8bae54
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
 
-PODFILE CHECKSUM: 7743776a2c04cd4bbf1862e85e033f1a7f591ecb
+PODFILE CHECKSUM: 630ea74b24255b3dff73b6a5ee0a33ba1136b07d
 
 COCOAPODS: 1.10.0

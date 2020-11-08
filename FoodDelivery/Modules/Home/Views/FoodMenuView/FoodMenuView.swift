@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 private let categoryReuseIdentifier = "CategoryCell"
 private let dishReuseIdentifier = "DishCell"
@@ -85,39 +86,35 @@ private extension FoodMenuView {
         
         let categories = input.categories.share()
         
-        // bind categoryCollectionView
-        categories.bind(to: categoryCollectionView.rx
-                                .items(cellIdentifier: categoryReuseIdentifier,
-                                       cellType: CategoryCell.self)) { (row, category, cell) in
+        // Bind categories to categoryCollectionView
+        categories.bind(to: categoryCollectionView
+                            .rx.items(cellIdentifier: categoryReuseIdentifier,
+                                      cellType: CategoryCell.self)) { (row, category, cell) in
                                         cell.category = category
             }
             .disposed(by: disposeBag)
         
-        // select first item of categoryCollectionView
+        // Select first item of categoryCollectionView
         categories.subscribe(onNext: {[unowned self] categories in
                 if categories.count > 0 {
-                    
-                    // wait to allow loading
+                    // wait to allow loading of categories
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         let indexPath = IndexPath(row: 0, section: 0)
-                        self.categoryCollectionView.selectItem(at: indexPath,
-                                                               animated: false,
-                                                               scrollPosition: .bottom)
-                        self.categoryCollectionView.delegate?.collectionView?(self.categoryCollectionView,
-                                                                              didSelectItemAt: indexPath)
+                        self.selectCategory(at: indexPath)
                     }
                 }
             })
             .disposed(by: disposeBag)
         
+        // Dishes of selected caterogy
         let dishes = categoryCollectionView.rx
-            .modelSelected(Category.self)
-            .map { category -> [Dish] in
-                category.dishes
-            }
-            .share()
+                        .modelSelected(Category.self)
+                        .map { category -> [Dish] in
+                            category.dishes
+                        }
+                        .share()
         
-        // bind dishesTableView based on selected category
+        // Bind dishes to dishTableView
         dishes.bind(to: dishTableView.rx
             .items(cellIdentifier: dishReuseIdentifier,
                    cellType: DishCell.self)) { (row, dish, cell) in
@@ -125,10 +122,27 @@ private extension FoodMenuView {
             }
             .disposed(by: disposeBag)
         
-        dishes.subscribe(onNext: {[unowned self] dishes in
+        // Scroll to top dish after changing category
+        dishes.subscribe(onNext: {[weak self] dishes in
                 if dishes.count > 0 {
                     let indexPath = IndexPath(row: 0, section: 0)
-                    self.dishTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                    self?.dishTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        // Swipe left and right to change category
+        dishTableView.rx
+            .swipeGesture([.left, .right])
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] gesture in
+                switch gesture.direction {
+                case .left:
+                    self?.selectNextCategory()
+                case .right:
+                    self?.selectPreviousCategory()
+                default:
+                    print("DEBUG: Unknown gesture")
                 }
             })
             .disposed(by: disposeBag)
@@ -158,4 +172,26 @@ private extension FoodMenuView {
                               paddingBottom: 24, paddingRight: 24)
         
     }
+    
+    func selectCategory(at indexPath: IndexPath) {
+        categoryCollectionView.selectItem(at: indexPath, animated: true,
+                                          scrollPosition: .centeredHorizontally)
+        categoryCollectionView.delegate?.collectionView?(self.categoryCollectionView,
+                                                              didSelectItemAt: indexPath)
+    }
+    
+    func selectNextCategory() {
+        guard let selectedIndexPath = categoryCollectionView.indexPathsForSelectedItems?[0] else { return }
+        let targetIndexPath = IndexPath(row: selectedIndexPath.row + 1, section: selectedIndexPath.section)
+        guard let _ = categoryCollectionView.cellForItem(at: targetIndexPath) else { return }
+        selectCategory(at: targetIndexPath)
+    }
+    
+    func selectPreviousCategory() {
+        guard let selectedIndexPath = categoryCollectionView.indexPathsForSelectedItems?[0] else { return }
+        let targetIndexPath = IndexPath(row: selectedIndexPath.row - 1, section: selectedIndexPath.section)
+        guard let _ = categoryCollectionView.cellForItem(at: targetIndexPath) else { return }
+        selectCategory(at: targetIndexPath)
+    }
+    
 }
