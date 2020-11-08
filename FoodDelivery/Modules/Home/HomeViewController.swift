@@ -40,6 +40,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupUI()
     }
     
 }
@@ -54,10 +55,9 @@ private extension HomeViewController {
     func setupView() {
         let output = Home.ViewOutput()
         _ = presenter.configure(with: output)
-        configureUI()
     }
     
-    func configureUI() {
+    func setupUI() {
         configureNavigationBar()
         
         view.addSubview(promotionsView)

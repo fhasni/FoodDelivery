@@ -74,6 +74,7 @@ final class DishCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -84,12 +85,8 @@ final class DishCell: UITableViewCell {
 // MARK: - Extensions -
 
 private extension DishCell {
-    func setupView() {
-        configureUI()
-        configureRx()
-    }
     
-    func configureRx() {
+    func setupView() {
         addToCartButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let id = self?.dish?.id else { return }
@@ -98,7 +95,7 @@ private extension DishCell {
             .disposed(by: disposeBag)
     }
     
-    func configureUI() {
+    func setupUI() {
         
         let cardView = CardView()
         
@@ -122,27 +119,26 @@ private extension DishCell {
         
         let detailsView : UIView = {
             let view = UIView()
-            view.setDimensions(height: 200)
             return view
         }()
         
         dishViewContainer.addSubview(detailsView)
         detailsView.anchor(left: dishViewContainer.leftAnchor, bottom: dishViewContainer.bottomAnchor,
-                           right: dishViewContainer.rightAnchor)
+                           right: dishViewContainer.rightAnchor, height: 200)
         
         dishViewContainer.addSubview(dishImageView)
-        dishImageView.anchor(top: dishViewContainer.topAnchor ,left: dishViewContainer.leftAnchor,
-                         bottom: detailsView.topAnchor, right: dishViewContainer.rightAnchor)
+        dishImageView.anchor(top: dishViewContainer.topAnchor, left: dishViewContainer.leftAnchor,
+                             bottom: detailsView.topAnchor, right: dishViewContainer.rightAnchor)
     
         detailsView.addSubview(dishNameLabel)
         dishNameLabel.anchor(top: detailsView.topAnchor, left: detailsView.leftAnchor,
-                        right: detailsView.rightAnchor, paddingTop: 10,
-                        paddingLeft: 20, paddingRight: 20)
+                             right: detailsView.rightAnchor, paddingTop: 10,
+                             paddingLeft: 20, paddingRight: 20)
         
         detailsView.addSubview(dishDescriptionLabel)
         dishDescriptionLabel.anchor(top: dishNameLabel.bottomAnchor, left: detailsView.leftAnchor,
-                        right: detailsView.rightAnchor, paddingTop: 10,
-                        paddingLeft: 20, paddingRight: 20)
+                                    right: detailsView.rightAnchor, paddingTop: 10,
+                                    paddingLeft: 20, paddingRight: 20)
         
         detailsView.addSubview(addToCartButton)
         addToCartButton.anchor(bottom: detailsView.bottomAnchor, right: detailsView.rightAnchor,

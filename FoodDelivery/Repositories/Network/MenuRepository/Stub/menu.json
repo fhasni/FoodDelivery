@@ -38,17 +38,17 @@
             },
             {
                "id":"100000006",
-               "name":"One-Pot-Vegetarian",
+               "name":"One Pot Vegetarian",
                "price":22.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000006.jpg",
-               "description":"One-Pot-Vegetarian-Orzo-Vegetable-Soup"
+               "description":"One Pot Vegetarian Orzo Vegetable Soup"
             },
             {
                "id":"100000007",
-               "name":"low-carb-chicken-soup",
+               "name":"Low Carb Chicken Soup",
                "price":25.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000007.jpg",
-               "description":"wholesomeyum_low-carb-chicken-soup-with-spaghetti-squash-paleo-gluten-free.jpg"
+               "description":"wholesomeyum low carb chicken soup with spaghetti squash paleo gluten free.jpg"
             }
          ]
       },
@@ -62,42 +62,42 @@
                "name":"Traditional Filet Mignon",
                "price":24.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000008.jpg",
-               "description":"A 6 oz tenderloin wrapped in bacon and served with pureed yukon gold potatoes and haricots verts"
+               "description":"A 6 oz tenderloin wrapped in bacon and served with pureed yukon gold potatoes and haricots verts."
             },
             {
                "id":"100000009",
                "name":"Bacon Bourbon Tenderloin Tips",
                "price":16.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000009.jpg",
-               "description":"Tenderloin tips, sautéed with bacon and mushrooms and finished with a bourbon-BBQ sauce"
+               "description":"Tenderloin tips, sautéed with bacon and mushrooms and finished with a bourbon-BBQ sauce."
             },
             {
                "id":"100000010",
                "name":"Rustlers Ribeye",
                "price":18.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000010.jpg",
-               "description":"Thick, hand-cut prime rib, grilled to order, served with a baked potato and seasonal vegetable medley"
+               "description":"Thick, hand-cut prime rib, grilled to order, served with a baked potato and seasonal vegetable medley."
             },
             {
                "id":"100000011",
                "name":"Surf and Turf",
                "price":17.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000011.jpg",
-               "description":"A grilled, queen-cut ribeye served with shrimp and scallop alfredo,"
+               "description":"A grilled, queen-cut ribeye served with shrimp and scallop alfredo."
             },
             {
                "id":"100000012",
                "name":"Roast Pork Loin",
                "price":23.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000012.jpg",
-               "description":"Slow roasted pork loin finished with a portabella demi-glace. Served with marrow-scented couscous and wilted kale"
+               "description":"Slow roasted pork loin finished with a portabella demi-glace. Served with marrow-scented couscous and wilted kale."
             },
             {
                "id":"100000014",
                "name":"Veal Saltimbocca",
                "price":12.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000014.jpg",
-               "description":"Tender veal cutlets sautéed with fresh sage and prosciutto. Finished in the oven with mozzarella and served atop creamy asiago linguini,"
+               "description":"Tender veal cutlets sautéed with fresh sage and prosciutto. Finished in the oven with mozzarella."
             }
          ]
       },
@@ -111,14 +111,14 @@
                "name":"A.D.’s Chicken Saltimbocca",
                "price":22.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000016.jpg",
-               "description":"Boneless chicken breast sautéed with fresh sage and prosciutto. Finished in the oven with mozzarella and served atop creamy asiago linguini"
+               "description":"Boneless chicken breast sautéed with fresh sage and prosciutto. Finished in the oven with mozzarella."
             },
             {
                "id":"100000017",
                "name":"Emeril’s Chicken",
                "price":15.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/1010000001/Item/Items/100000017.jpg",
-               "description":"Boneless chicken breast sautéed with mushrooms, spinach, artichoke hearts, fire-roasted red peppers, and sun-dried tomatoes. Finished with a chipotle-chevre sauce"
+               "description":"Boneless chicken breast sautéed with mushrooms, spinach, artichoke hearts, fire-roasted red peppers, and sun-dried tomatoes."
             }
          ]
       },
@@ -132,14 +132,14 @@
                "name":"Seafood Sauté or Alfredo",
                "price":25.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000018.jpg",
-               "description":"Fresh haddock, sea scallops, gulf shrimp, and chef’s choice of ravioli tossed in your choice of sauce. With garlic and white wine"
+               "description":"Fresh haddock, sea scallops, gulf shrimp, and chef’s choice of ravioli tossed in your choice of sauce. With garlic and white wine."
             },
             {
                "id":"100000019",
                "name":"Sautéed Seafood Caprese",
                "price":23.5,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000019.jpg",
-               "description":"Fresh haddock, gulf shrimp, and sea scallops sautéed with fresh tomatoes, basil, and garlic, finished with fresh mozzarella"
+               "description":"Fresh haddock, gulf shrimp, and sea scallops sautéed with fresh tomatoes, basil, and garlic, finished with fresh mozzarella."
             }
          ]
       },
@@ -160,14 +160,7 @@
                "name":"Keema Biryani",
                "price":21.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000015.jpg",
-               "description":"Cook up a storm by combining minced lamb with aromatic spices and crunchy nuts. Keema biryani is the delicious amalgamation of rice with aromatic spices and minced meat, dry fruits and rose water that is a delight to relish on"
-            },
-            {
-               "id":"100000028",
-               "name":"gpl",
-               "price":36.0,
-               "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000028.jpg",
-               "description":"sss"
+               "description":"Cook up a storm by combining minced lamb with aromatic spices and crunchy nuts."
             }
          ]
       },
@@ -181,21 +174,21 @@
                "name":"Burger",
                "price":30.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000026.jpg",
-               "description":"Burger"
+               "description":"Burger, Dill pickle, cheddar cheese, tomato, red onion, ground chuck beef."
             },
             {
                "id":"100000027",
                "name":"Pizza",
                "price":50.0,
-               "image":"",
-               "description":"pizza"
+               "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000027.jpg",
+               "description":"Ricotta cheese, mozzarella cheese and parmesan cheese."
             },
             {
                "id":"100000029",
                "name":"Tacos",
                "price":25.0,
                "image":"http://restaurants.unicomerp.net/images/Restaurant/Item/Item_100000029.jpg",
-               "description":"Mexican Street Tacos"
+               "description":"Mexican Street Tacos, Skirt steak, soy sauce, flour tortillas, red onion, lime juice."
             }
          ]
       }

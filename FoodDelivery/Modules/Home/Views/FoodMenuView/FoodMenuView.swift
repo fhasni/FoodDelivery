@@ -25,7 +25,6 @@ final class FoodMenuView: UIView {
     
     private let headerView : UIView = {
         let view = UIView()
-        view.backgroundColor = .black
         return view
     }()
     
@@ -68,6 +67,8 @@ final class FoodMenuView: UIView {
         self.presenter = presenter
         super.init(frame: .zero)
         setupView()
+        setupUI()
+
     }
     
     required init?(coder: NSCoder) {
@@ -80,11 +81,6 @@ final class FoodMenuView: UIView {
 private extension FoodMenuView {
     
     func setupView() {
-        configureRx()
-        configureUI()
-    }
-    
-    func configureRx() {
         let input = presenter.configure(with: Home.ViewOutput())
         
         let categories = input.categories.share()
@@ -138,7 +134,7 @@ private extension FoodMenuView {
             .disposed(by: disposeBag)
     }
     
-    func configureUI() {
+    func setupUI() {
         
         layer.cornerRadius = 40
         clipsToBounds = true

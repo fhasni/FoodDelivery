@@ -12,8 +12,7 @@ class CardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        configureUI()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -23,7 +22,7 @@ class CardView: UIView {
 }
 
 extension CardView {
-    func configureUI() {
+    func setupUI() {
         layer.cornerRadius = 20.0
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = CGSize(width: 0.0, height: 0.0)

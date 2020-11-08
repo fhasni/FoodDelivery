@@ -27,7 +27,6 @@ final class PromotionsView: UIView {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.backgroundColor = .black
         collectionView.contentInset = UIEdgeInsets(top:0, left: 0, bottom: 0, right: 0)
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
@@ -50,12 +49,12 @@ final class PromotionsView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureUI()
+        setupUI()
     }
     
     override func layoutSubviews() {
@@ -65,7 +64,7 @@ final class PromotionsView: UIView {
     
     // MARK: - Helpers -
 
-    func configureUI() {
+    func setupUI() {
 
         addSubview(collectionView)
         collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
