@@ -8,6 +8,6 @@
 
 import RxSwift
 
-protocol RepositoryInterface {
-    func search(latitude: Double, longitude: Double) -> Single<Menu?>
+protocol MenuRepositoryInterface {
+    func getMenu(restaurentId: String) -> Single<Menu>
 }

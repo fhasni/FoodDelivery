@@ -10,11 +10,11 @@ import Foundation
 
 
 struct Category {
-    var id: String?
+    var id: String!
     
-    var name: String?
+    var name: String!
     
-    var image: String?
+    var image: String!
     
-    var dishes: [Dish]?
+    var dishes: [Dish]!
 }

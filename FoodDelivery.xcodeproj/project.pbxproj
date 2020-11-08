@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C0742DE2544FF77002BE22A /* Restaurent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0742DD2544FF77002BE22A /* Restaurent.swift */; };
-		2C0742FC2545A18E002BE22A /* RemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0742FB2545A18E002BE22A /* RemoteRepository.swift */; };
+		2C0742FC2545A18E002BE22A /* RemoteMenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0742FB2545A18E002BE22A /* RemoteMenuRepository.swift */; };
 		2C0742FE2545A593002BE22A /* RestaurentMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */; };
 		2C0743012545C09D002BE22A /* Restaurant+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0743002545C09D002BE22A /* Restaurant+ObjectMapper.swift */; };
 		2C1AAACD25479C2900C5B794 /* FormatterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AAACC25479C2900C5B794 /* FormatterInterface.swift */; };
@@ -24,13 +24,15 @@
 		2C59F2FD25445FD80046D9E3 /* PresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F2F825445FD80046D9E3 /* PresenterInterface.swift */; };
 		2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F2F925445FD80046D9E3 /* ViewInterface.swift */; };
 		2C59F2FF25445FD80046D9E3 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C59F2FA25445FD80046D9E3 /* InteractorInterface.swift */; };
-		2CACE566254CDB860088620D /* RepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE565254CDB860088620D /* RepositoryInterface.swift */; };
+		2C6DC253255771A8006B0DDD /* CartRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DC252255771A8006B0DDD /* CartRepositoryInterface.swift */; };
+		2C6DC258255777CF006B0DDD /* MemCartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6DC257255777CF006B0DDD /* MemCartRepository.swift */; };
+		2CACE566254CDB860088620D /* MenuRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE565254CDB860088620D /* MenuRepositoryInterface.swift */; };
 		2CACE575254F31FD0088620D /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 2CACE574254F31FD0088620D /* menu.json */; };
 		2CACE577254F3B6B0088620D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE576254F3B6B0088620D /* Category.swift */; };
 		2CACE579254F3BA50088620D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE578254F3BA50088620D /* Dish.swift */; };
 		2CACE57B254F3E7F0088620D /* Category+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57A254F3E7F0088620D /* Category+ObjectMapper.swift */; };
 		2CACE57D254F3EAF0088620D /* Dish+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57C254F3EAF0088620D /* Dish+ObjectMapper.swift */; };
-		2CACE57F254F41510088620D /* StubRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57E254F41510088620D /* StubRepository.swift */; };
+		2CACE57F254F41510088620D /* StubMenuRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE57E254F41510088620D /* StubMenuRepository.swift */; };
 		2CACE581254F55010088620D /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE580254F55010088620D /* DishCell.swift */; };
 		2CACE583254F60C10088620D /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE582254F60C10088620D /* UIView+RoundCorners.swift */; };
 		2CACE586254F72700088620D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE585254F72700088620D /* CardView.swift */; };
@@ -41,13 +43,6 @@
 		2CAFC1FB2544D34900625BC3 /* UIViewController+Gradiant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1FA2544D34900625BC3 /* UIViewController+Gradiant.swift */; };
 		2CAFC1FD2544D3BC00625BC3 /* UICollectionView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1FC2544D3BC00625BC3 /* UICollectionView+Scroll.swift */; };
 		2CAFC1FF2544D44900625BC3 /* UIViewController+NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1FE2544D44900625BC3 /* UIViewController+NavigationBar.swift */; };
-		2CB93C95254A513D0063E22F /* RestaurentDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CB93C8E254A513D0063E22F /* RestaurentDetails.storyboard */; };
-		2CB93C96254A513D0063E22F /* RestaurentDetailsInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C8F254A513D0063E22F /* RestaurentDetailsInterfaces.swift */; };
-		2CB93C97254A513D0063E22F /* RestaurentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C90254A513D0063E22F /* RestaurentDetailsPresenter.swift */; };
-		2CB93C98254A513D0063E22F /* RestaurentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C91254A513D0063E22F /* RestaurentDetailsViewController.swift */; };
-		2CB93C99254A513D0063E22F /* RestaurentDetailsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C92254A513D0063E22F /* RestaurentDetailsFormatter.swift */; };
-		2CB93C9A254A513D0063E22F /* RestaurentDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C93254A513D0063E22F /* RestaurentDetailsInteractor.swift */; };
-		2CB93C9B254A513D0063E22F /* RestaurentDetailsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C94254A513D0063E22F /* RestaurentDetailsWireframe.swift */; };
 		2CB93CA3254A51C00063E22F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CB93C9C254A51C00063E22F /* Home.storyboard */; };
 		2CB93CA4254A51C00063E22F /* HomeInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C9D254A51C00063E22F /* HomeInterfaces.swift */; };
 		2CB93CA5254A51C00063E22F /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93C9E254A51C00063E22F /* HomePresenter.swift */; };
@@ -83,7 +78,7 @@
 		1714AA176BD0F2180565E275 /* Pods_FoodDelivery_FoodDeliveryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDelivery_FoodDeliveryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29E6F5B42CD7B05C905B9C45 /* Pods-FoodDelivery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery.release.xcconfig"; path = "Target Support Files/Pods-FoodDelivery/Pods-FoodDelivery.release.xcconfig"; sourceTree = "<group>"; };
 		2C0742DD2544FF77002BE22A /* Restaurent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurent.swift; sourceTree = "<group>"; };
-		2C0742FB2545A18E002BE22A /* RemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteRepository.swift; sourceTree = "<group>"; };
+		2C0742FB2545A18E002BE22A /* RemoteMenuRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMenuRepository.swift; sourceTree = "<group>"; };
 		2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentMenuService.swift; sourceTree = "<group>"; };
 		2C0743002545C09D002BE22A /* Restaurant+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+ObjectMapper.swift"; sourceTree = "<group>"; };
 		2C1AAACC25479C2900C5B794 /* FormatterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterInterface.swift; sourceTree = "<group>"; };
@@ -105,13 +100,15 @@
 		2C59F2F825445FD80046D9E3 /* PresenterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterInterface.swift; sourceTree = "<group>"; };
 		2C59F2F925445FD80046D9E3 /* ViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewInterface.swift; sourceTree = "<group>"; };
 		2C59F2FA25445FD80046D9E3 /* InteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
-		2CACE565254CDB860088620D /* RepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryInterface.swift; sourceTree = "<group>"; };
+		2C6DC252255771A8006B0DDD /* CartRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRepositoryInterface.swift; sourceTree = "<group>"; };
+		2C6DC257255777CF006B0DDD /* MemCartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemCartRepository.swift; sourceTree = "<group>"; };
+		2CACE565254CDB860088620D /* MenuRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRepositoryInterface.swift; sourceTree = "<group>"; };
 		2CACE574254F31FD0088620D /* menu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		2CACE576254F3B6B0088620D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		2CACE578254F3BA50088620D /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		2CACE57A254F3E7F0088620D /* Category+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+ObjectMapper.swift"; sourceTree = "<group>"; };
 		2CACE57C254F3EAF0088620D /* Dish+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dish+ObjectMapper.swift"; sourceTree = "<group>"; };
-		2CACE57E254F41510088620D /* StubRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubRepository.swift; sourceTree = "<group>"; };
+		2CACE57E254F41510088620D /* StubMenuRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StubMenuRepository.swift; sourceTree = "<group>"; };
 		2CACE580254F55010088620D /* DishCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		2CACE582254F60C10088620D /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		2CACE585254F72700088620D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -122,13 +119,6 @@
 		2CAFC1FA2544D34900625BC3 /* UIViewController+Gradiant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Gradiant.swift"; sourceTree = "<group>"; };
 		2CAFC1FC2544D3BC00625BC3 /* UICollectionView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Scroll.swift"; sourceTree = "<group>"; };
 		2CAFC1FE2544D44900625BC3 /* UIViewController+NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationBar.swift"; sourceTree = "<group>"; };
-		2CB93C8E254A513D0063E22F /* RestaurentDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurentDetails.storyboard; sourceTree = "<group>"; };
-		2CB93C8F254A513D0063E22F /* RestaurentDetailsInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsInterfaces.swift; sourceTree = "<group>"; };
-		2CB93C90254A513D0063E22F /* RestaurentDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsPresenter.swift; sourceTree = "<group>"; };
-		2CB93C91254A513D0063E22F /* RestaurentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsViewController.swift; sourceTree = "<group>"; };
-		2CB93C92254A513D0063E22F /* RestaurentDetailsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsFormatter.swift; sourceTree = "<group>"; };
-		2CB93C93254A513D0063E22F /* RestaurentDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsInteractor.swift; sourceTree = "<group>"; };
-		2CB93C94254A513D0063E22F /* RestaurentDetailsWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentDetailsWireframe.swift; sourceTree = "<group>"; };
 		2CB93C9C254A51C00063E22F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2CB93C9D254A51C00063E22F /* HomeInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaces.swift; sourceTree = "<group>"; };
 		2CB93C9E254A51C00063E22F /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -185,18 +175,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2C0742DF2545001B002BE22A /* RestaurentDetails */ = {
-			isa = PBXGroup;
-			children = (
-				2CB93C8E254A513D0063E22F /* RestaurentDetails.storyboard */,
-				2CB93C90254A513D0063E22F /* RestaurentDetailsPresenter.swift */,
-				2CB93C91254A513D0063E22F /* RestaurentDetailsViewController.swift */,
-				2CB93C92254A513D0063E22F /* RestaurentDetailsFormatter.swift */,
-				2CB93C94254A513D0063E22F /* RestaurentDetailsWireframe.swift */,
-			);
-			path = RestaurentDetails;
-			sourceTree = "<group>";
-		};
 		2C59F2AA254458900046D9E3 = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +203,7 @@
 				2C59F2E92544591C0046D9E3 /* Application */,
 				2CCA15202546057A003B81C2 /* Domain */,
 				2C59F2E7254458F60046D9E3 /* Modules */,
-				2C59F30E25447C9D0046D9E3 /* RemoteRepository */,
-				2CACE56A254EC6F50088620D /* LocationManager */,
+				2C6DC24B25576F07006B0DDD /* Repositories */,
 				2C59F2F425445F990046D9E3 /* Common */,
 				2C59F30F25447DD20046D9E3 /* Resources */,
 				2C59F2E8254459030046D9E3 /* SupportingFiles */,
@@ -269,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				2C59F2E6254458ED0046D9E3 /* Home */,
-				2C0742DF2545001B002BE22A /* RestaurentDetails */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -316,16 +292,14 @@
 			path = VIPER;
 			sourceTree = "<group>";
 		};
-		2C59F30E25447C9D0046D9E3 /* RemoteRepository */ = {
+		2C59F30E25447C9D0046D9E3 /* MenuRepository */ = {
 			isa = PBXGroup;
 			children = (
-				2CACE56D254F2DAB0088620D /* mock_data */,
-				2CCA151F25460514003B81C2 /* Services */,
-				2CCA151E25460492003B81C2 /* Models */,
-				2C0742FB2545A18E002BE22A /* RemoteRepository.swift */,
-				2CACE57E254F41510088620D /* StubRepository.swift */,
+				2C6DC24F25577128006B0DDD /* Stub */,
+				2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */,
+				2C0742FB2545A18E002BE22A /* RemoteMenuRepository.swift */,
 			);
-			path = RemoteRepository;
+			path = MenuRepository;
 			sourceTree = "<group>";
 		};
 		2C59F30F25447DD20046D9E3 /* Resources */ = {
@@ -346,10 +320,54 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		2C6DC24B25576F07006B0DDD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DC25025577179006B0DDD /* InMemory */,
+				2C6DC24C25576FEA006B0DDD /* Network */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		2C6DC24C25576FEA006B0DDD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2CCA151E25460492003B81C2 /* NetworkModels */,
+				2C59F30E25447C9D0046D9E3 /* MenuRepository */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2C6DC24F25577128006B0DDD /* Stub */ = {
+			isa = PBXGroup;
+			children = (
+				2CACE574254F31FD0088620D /* menu.json */,
+				2CACE57E254F41510088620D /* StubMenuRepository.swift */,
+			);
+			path = Stub;
+			sourceTree = "<group>";
+		};
+		2C6DC25025577179006B0DDD /* InMemory */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DC25425577255006B0DDD /* CartRepository */,
+			);
+			path = InMemory;
+			sourceTree = "<group>";
+		};
+		2C6DC25425577255006B0DDD /* CartRepository */ = {
+			isa = PBXGroup;
+			children = (
+				2C6DC257255777CF006B0DDD /* MemCartRepository.swift */,
+			);
+			path = CartRepository;
+			sourceTree = "<group>";
+		};
 		2CACE564254CDB620088620D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				2CACE565254CDB860088620D /* RepositoryInterface.swift */,
+				2CACE565254CDB860088620D /* MenuRepositoryInterface.swift */,
+				2C6DC252255771A8006B0DDD /* CartRepositoryInterface.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -357,25 +375,9 @@
 		2CACE567254CE0EF0088620D /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				2CB93C93254A513D0063E22F /* RestaurentDetailsInteractor.swift */,
 				2CB93CA1254A51C00063E22F /* HomeInteractor.swift */,
 			);
 			path = Interactors;
-			sourceTree = "<group>";
-		};
-		2CACE56A254EC6F50088620D /* LocationManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LocationManager;
-			sourceTree = "<group>";
-		};
-		2CACE56D254F2DAB0088620D /* mock_data */ = {
-			isa = PBXGroup;
-			children = (
-				2CACE574254F31FD0088620D /* menu.json */,
-			);
-			path = mock_data;
 			sourceTree = "<group>";
 		};
 		2CACE584254F72600088620D /* Views */ = {
@@ -421,27 +423,18 @@
 			isa = PBXGroup;
 			children = (
 				2CB93C9D254A51C00063E22F /* HomeInterfaces.swift */,
-				2CB93C8F254A513D0063E22F /* RestaurentDetailsInterfaces.swift */,
 			);
 			path = ModulesInterfaces;
 			sourceTree = "<group>";
 		};
-		2CCA151E25460492003B81C2 /* Models */ = {
+		2CCA151E25460492003B81C2 /* NetworkModels */ = {
 			isa = PBXGroup;
 			children = (
 				2C0743002545C09D002BE22A /* Restaurant+ObjectMapper.swift */,
 				2CACE57A254F3E7F0088620D /* Category+ObjectMapper.swift */,
 				2CACE57C254F3EAF0088620D /* Dish+ObjectMapper.swift */,
 			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		2CCA151F25460514003B81C2 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */,
-			);
-			path = Services;
+			path = NetworkModels;
 			sourceTree = "<group>";
 		};
 		2CCA15202546057A003B81C2 /* Domain */ = {
@@ -592,7 +585,6 @@
 				2CB93CA3254A51C00063E22F /* Home.storyboard in Resources */,
 				2C59F2C0254458930046D9E3 /* Assets.xcassets in Resources */,
 				2C59F2BE254458900046D9E3 /* Main.storyboard in Resources */,
-				2CB93C95254A513D0063E22F /* RestaurentDetails.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,12 +715,11 @@
 				2CAFC1F42544C9C500625BC3 /* PromotionsView.swift in Sources */,
 				2CB93CA8254A51C00063E22F /* HomeInteractor.swift in Sources */,
 				2C59F2FF25445FD80046D9E3 /* InteractorInterface.swift in Sources */,
-				2CB93C9B254A513D0063E22F /* RestaurentDetailsWireframe.swift in Sources */,
+				2C6DC258255777CF006B0DDD /* MemCartRepository.swift in Sources */,
 				2C59F2B7254458900046D9E3 /* AppDelegate.swift in Sources */,
 				2CACE588254F98520088620D /* UIColor+AppColors.swift in Sources */,
 				2CAFC1FF2544D44900625BC3 /* UIViewController+NavigationBar.swift in Sources */,
 				2C59F2FB25445FD80046D9E3 /* BaseWireframe.swift in Sources */,
-				2CB93C99254A513D0063E22F /* RestaurentDetailsFormatter.swift in Sources */,
 				2C59F2FD25445FD80046D9E3 /* PresenterInterface.swift in Sources */,
 				2CB93CA4254A51C00063E22F /* HomeInterfaces.swift in Sources */,
 				2CACE583254F60C10088620D /* UIView+RoundCorners.swift in Sources */,
@@ -742,8 +733,6 @@
 				2CAFC1FD2544D3BC00625BC3 /* UICollectionView+Scroll.swift in Sources */,
 				2C0742DE2544FF77002BE22A /* Restaurent.swift in Sources */,
 				2CB93CA6254A51C00063E22F /* HomeViewController.swift in Sources */,
-				2CB93C97254A513D0063E22F /* RestaurentDetailsPresenter.swift in Sources */,
-				2CB93C98254A513D0063E22F /* RestaurentDetailsViewController.swift in Sources */,
 				2CACE577254F3B6B0088620D /* Category.swift in Sources */,
 				2C59F2B9254458900046D9E3 /* SceneDelegate.swift in Sources */,
 				2CACE586254F72700088620D /* CardView.swift in Sources */,
@@ -751,17 +740,16 @@
 				2CACE579254F3BA50088620D /* Dish.swift in Sources */,
 				2C0742FE2545A593002BE22A /* RestaurentMenuService.swift in Sources */,
 				2CACE581254F55010088620D /* DishCell.swift in Sources */,
-				2CB93C96254A513D0063E22F /* RestaurentDetailsInterfaces.swift in Sources */,
 				2CACE57D254F3EAF0088620D /* Dish+ObjectMapper.swift in Sources */,
 				2CB93CA5254A51C00063E22F /* HomePresenter.swift in Sources */,
-				2C0742FC2545A18E002BE22A /* RemoteRepository.swift in Sources */,
+				2C0742FC2545A18E002BE22A /* RemoteMenuRepository.swift in Sources */,
 				2CCA152725462BFC003B81C2 /* CategoryCell.swift in Sources */,
 				2CB93CA7254A51C00063E22F /* HomeFormatter.swift in Sources */,
-				2CACE57F254F41510088620D /* StubRepository.swift in Sources */,
+				2CACE57F254F41510088620D /* StubMenuRepository.swift in Sources */,
 				2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */,
-				2CB93C9A254A513D0063E22F /* RestaurentDetailsInteractor.swift in Sources */,
+				2C6DC253255771A8006B0DDD /* CartRepositoryInterface.swift in Sources */,
 				2CAFC1F62544D1CA00625BC3 /* UIView+Constraints.swift in Sources */,
-				2CACE566254CDB860088620D /* RepositoryInterface.swift in Sources */,
+				2CACE566254CDB860088620D /* MenuRepositoryInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

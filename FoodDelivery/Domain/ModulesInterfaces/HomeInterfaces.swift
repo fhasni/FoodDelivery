@@ -25,7 +25,7 @@ protocol HomeFormatterInterface: FormatterInterface {
 }
 
 protocol HomeInteractorInterface: InteractorInterface {
-    var menu : Single<Menu?> { get }
+    var menu : Single<Menu> { get }
 }
 
 enum Home {
@@ -35,7 +35,7 @@ enum Home {
 
     struct ViewInput {
         let models: FormatterOutput
-        let menu: Single<Menu?>
+        let categories: Observable<[Category]>
     }
 
     struct FormatterInput {

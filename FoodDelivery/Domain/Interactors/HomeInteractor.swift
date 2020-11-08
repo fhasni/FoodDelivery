@@ -12,9 +12,9 @@ import Foundation
 import RxSwift
 
 final class HomeInteractor {
-    let repositoty: RepositoryInterface
+    private let repositoty: MenuRepositoryInterface
     
-    init(repositoty: RepositoryInterface) {
+    init(repositoty: MenuRepositoryInterface) {
         self.repositoty = repositoty
     }
 }
@@ -22,8 +22,8 @@ final class HomeInteractor {
 // MARK: - Extensions -
 
 extension HomeInteractor: HomeInteractorInterface {
-    var menu: Single<Menu?> {
-        return repositoty.search(latitude: 37.786882, longitude: -122.399972)
+    var menu: Single<Menu> {
+        return repositoty.getMenu(restaurentId: "qwerty")
     }
     
 }

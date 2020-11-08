@@ -19,14 +19,21 @@ final class CategoryCell: UICollectionViewCell {
             categoryNameLabel.text = category?.name
         }
     }
-        
+    override var isSelected: Bool {
+        didSet {
+            categoryNameLabel.textColor = isSelected ? .black : .lightGray
+        }
+    }
     // MARK: - Private properties -
 
     private lazy var categoryNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Category name"
         label.font = .systemFont(ofSize: 20, weight: .semibold)
-        label.setDimensions(height: 50)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .lightGray
         return label
     }()
     
@@ -44,11 +51,8 @@ final class CategoryCell: UICollectionViewCell {
 
 extension CategoryCell {
     func configureUI() {
-        
         addSubview(categoryNameLabel)
-        categoryNameLabel.centerX(inView: self)
-        categoryNameLabel.centerY(inView: self)
-        
-        backgroundColor = .systemOrange
+        categoryNameLabel.anchor(top: topAnchor, left: leftAnchor,
+                                 bottom: bottomAnchor, right: rightAnchor)
     }
 }

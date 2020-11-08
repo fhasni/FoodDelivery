@@ -25,7 +25,7 @@ final class HomeWireframe: BaseWireframe {
         super.init(viewController: moduleViewController)
 
         let formatter = HomeFormatter()
-        let interactor = HomeInteractor(repositoty: StubRepository())
+        let interactor = HomeInteractor(repositoty: StubMenuRepository())
         let presenter = HomePresenter(view: moduleViewController, formatter: formatter, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }

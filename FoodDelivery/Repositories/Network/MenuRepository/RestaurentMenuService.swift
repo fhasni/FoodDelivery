@@ -10,7 +10,7 @@ import Foundation
 import Moya
 
 enum RestaurentMenuService {
-    case getMenu
+    case getMenu(restaurentId: String)
 }
 
 extension RestaurentMenuService: TargetType {
@@ -20,8 +20,8 @@ extension RestaurentMenuService: TargetType {
     
     var path: String {
         switch self {
-        case .getMenu:
-            return "/search"
+        case .getMenu(let restaurentId):
+            return "/menue/\(restaurentId)"
         }
     }
     
@@ -39,7 +39,7 @@ extension RestaurentMenuService: TargetType {
                 let url = URL(fileURLWithPath: path)
                 do {
                     let data = try Data(contentsOf: url)
-                    print("DEBUG: mock data: \(data)")
+                    print("DEBUG: mock data loaded successfully")
                     return data
                 } catch {
                     print("DEBUG: failed to load mock data")

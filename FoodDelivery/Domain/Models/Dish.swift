@@ -10,13 +10,13 @@ import Foundation
 
 
 struct Dish {
-    var id: String?
+    var id: String!
     
-    var name: String?
+    var name: String!
     
-    var price: Double?
+    var price: Double!
     
-    var image: String?
+    var image: String!
     
-    var description: String?
+    var description: String!
 }

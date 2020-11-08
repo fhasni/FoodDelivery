@@ -43,17 +43,19 @@ final class DishCell: UITableViewCell {
     
     private lazy var dishNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 30, weight: .semibold)
-        label.setDimensions(height: 50)
+        label.font = .systemFont(ofSize: 25, weight: .semibold)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.sizeToFit()
         return label
     }()
     
     private lazy var dishDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        label.sizeToFit()
         label.textColor = .lightGray
-        label.setDimensions(height: 50)
         return label
     }()
     
@@ -84,6 +86,16 @@ final class DishCell: UITableViewCell {
 private extension DishCell {
     func setupView() {
         configureUI()
+        configureRx()
+    }
+    
+    func configureRx() {
+        addToCartButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let id = self?.dish?.id else { return }
+                print("DEBUG: Add dish cart with id: \(id)")
+            })
+            .disposed(by: disposeBag)
     }
     
     func configureUI() {
@@ -129,7 +141,7 @@ private extension DishCell {
         
         detailsView.addSubview(dishDescriptionLabel)
         dishDescriptionLabel.anchor(top: dishNameLabel.bottomAnchor, left: detailsView.leftAnchor,
-                        right: detailsView.rightAnchor, paddingTop: 0,
+                        right: detailsView.rightAnchor, paddingTop: 10,
                         paddingLeft: 20, paddingRight: 20)
         
         detailsView.addSubview(addToCartButton)

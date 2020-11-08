@@ -41,8 +41,12 @@ extension HomePresenter: HomePresenterInterface {
 
         let formatterOutput = formatter.format(for: formatterInput)
         
-        let menuOutput = interactor.menu
-        return Home.ViewInput(models: formatterOutput, menu: menuOutput)
+        let categories = interactor.menu.asObservable()
+                                        .map { $0.categories ?? [] }
+                                        .observeOn(MainScheduler.instance)
+                                        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        
+        return Home.ViewInput(models: formatterOutput, categories: categories)
     }
 
 }

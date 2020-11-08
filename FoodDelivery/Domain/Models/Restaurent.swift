@@ -10,12 +10,12 @@
 import Foundation
 
 struct Menu {
-    var id: String?
+    var id: String!
     
-    var name: String?
+    var name: String!
     
-    var image: String?
+    var image: String!
     
-    var categories: [Category]?
+    var categories: [Category]!
 }
 
