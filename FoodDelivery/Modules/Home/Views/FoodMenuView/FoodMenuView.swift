@@ -37,7 +37,6 @@ final class FoodMenuView: UIView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.contentInsetAdjustmentBehavior = .never
         cv.showsHorizontalScrollIndicator = false
-        cv.showsVerticalScrollIndicator = false
         cv.contentOffset = .zero
         cv.register(CategoryCell.self, forCellWithReuseIdentifier: categoryReuseIdentifier)
         cv.backgroundColor = .white
@@ -50,8 +49,11 @@ final class FoodMenuView: UIView {
         tableView.rowHeight = 550
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
+    
+    private let pannableView = UIView()
     
     private let openCartButton: UIButton = {
         let button = UIButton(type: .system)
@@ -130,22 +132,66 @@ private extension FoodMenuView {
                 }
             })
             .disposed(by: disposeBag)
-        
-        // Swipe left and right to change category
-        dishTableView.rx
-            .swipeGesture([.left, .right])
-            .when(.recognized)
-            .subscribe(onNext: { [weak self] gesture in
-                switch gesture.direction {
-                case .left:
-                    self?.selectNextCategory()
-                case .right:
-                    self?.selectPreviousCategory()
-                default:
-                    print("DEBUG: Unknown gesture")
+                
+        let panGesture = pannableView.rx
+            .panGesture(configuration: { gestureRecognizer, delegate in
+                delegate.simultaneousRecognitionPolicy = .custom { gestureRecognizer, otherGestureRecognizer in
+                    return  otherGestureRecognizer.view != self.dishTableView
                 }
             })
+            .share()
+        
+        panGesture.when(.began,.changed)
+            .asTranslation()
+            .subscribe(onNext: { [unowned self] in
+                print("DEBUG: Pan gesture began or changed")
+                
+                self.pannableView.transform = CGAffineTransform(translationX: $0.translation.x, y: 0)
+                self.pannableView.alpha = 0.5
+                self.dishTableView.isScrollEnabled = false
+                
+            })
             .disposed(by: disposeBag)
+
+        panGesture.when(.ended)
+            .subscribe(onNext: { [unowned self] translation in
+                print("DEBUG: Pan gesture ended")
+                let screenWidth = UIScreen.main.bounds.width
+
+                let restoreTableView = {
+                    self.dishTableView.isScrollEnabled = true
+                    self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.pannableView.alpha = 1
+                }
+                
+                let loadNext: (Bool) -> () = { isNext in
+                    UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                        self.pannableView.transform = CGAffineTransform(translationX: isNext ? -screenWidth : screenWidth, y: 0)
+                        self.pannableView.alpha = 0
+                    }, completion: { finished in
+                        self.pannableView.transform = CGAffineTransform(translationX: isNext ? screenWidth : -screenWidth, y: 0)
+                        isNext ? self.selectNextCategory() : self.selectPreviousCategory()
+                        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                            self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                            self.pannableView.alpha = 1
+                        }, completion: { finished in
+                            self.dishTableView.isScrollEnabled = true
+                            
+                        })
+                    })
+                }
+                
+                if self.pannableView.transform.tx > screenWidth/10 {
+                    loadNext(false)
+                } else if self.pannableView.transform.tx < -screenWidth/10 {
+                    loadNext(true)
+                } else {
+                    restoreTableView()
+                }
+       
+            })
+           .disposed(by: disposeBag)
+
     }
     
     func setupUI() {
@@ -163,9 +209,13 @@ private extension FoodMenuView {
                                       right: headerView.rightAnchor,
                                       height: 100)
         
-        addSubview(dishTableView)
-        dishTableView.anchor(top: headerView.bottomAnchor, left: leftAnchor,
+        addSubview(pannableView)
+        pannableView.anchor(top: headerView.bottomAnchor, left: leftAnchor,
                                bottom: bottomAnchor, right: rightAnchor)
+        
+        pannableView.addSubview(dishTableView)
+        dishTableView.anchor(top: pannableView.topAnchor, left: pannableView.leftAnchor,
+                             bottom: pannableView.bottomAnchor, right: pannableView.rightAnchor)
         
         addSubview(openCartButton)
         openCartButton.anchor(bottom: bottomAnchor, right: rightAnchor,
@@ -176,21 +226,27 @@ private extension FoodMenuView {
     func selectCategory(at indexPath: IndexPath) {
         categoryCollectionView.selectItem(at: indexPath, animated: true,
                                           scrollPosition: .centeredHorizontally)
-        categoryCollectionView.delegate?.collectionView?(self.categoryCollectionView,
+        categoryCollectionView.delegate?.collectionView?(categoryCollectionView,
                                                               didSelectItemAt: indexPath)
     }
     
     func selectNextCategory() {
+        print("DEBUG: Should select next category")
+        // get indexPath of current category
         guard let selectedIndexPath = categoryCollectionView.indexPathsForSelectedItems?[0] else { return }
         let targetIndexPath = IndexPath(row: selectedIndexPath.row + 1, section: selectedIndexPath.section)
-        guard let _ = categoryCollectionView.cellForItem(at: targetIndexPath) else { return }
+        // make sure that the indexPath stays in bounds
+        if targetIndexPath.row > categoryCollectionView.numberOfItems(inSection: 0) - 1 { return }
         selectCategory(at: targetIndexPath)
     }
     
     func selectPreviousCategory() {
+        print("DEBUG: Should select previous category")
+        // get indexPath of current category
         guard let selectedIndexPath = categoryCollectionView.indexPathsForSelectedItems?[0] else { return }
         let targetIndexPath = IndexPath(row: selectedIndexPath.row - 1, section: selectedIndexPath.section)
-        guard let _ = categoryCollectionView.cellForItem(at: targetIndexPath) else { return }
+        // make sure that the indexPath stays in bounds
+        if targetIndexPath.row < 0  { return }
         selectCategory(at: targetIndexPath)
     }
     

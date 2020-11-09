@@ -27,6 +27,7 @@ final class CategoryCell: UICollectionViewCell {
         }
     }
     
+    
     // MARK: - Private properties -
 
     private lazy var categoryNameLabel: UILabel = {
