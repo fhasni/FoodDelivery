@@ -36,7 +36,11 @@ final class HomeViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private var foodMenuViewTopOffset : CGFloat = 600
+    private let topOffsetCollapsed : CGFloat = 600 // offset of food menu view when it's collapsed
+    
+    private let topOffsetExpended : CGFloat = 0 // offset of food menu view when it's expended
+    
+    private lazy var topOffset = topOffsetCollapsed
     
     // MARK: - Lifecycle -
     
@@ -44,6 +48,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         setupRx()
         setupUI()
+        setupGestures()
     }
     
 }
@@ -60,6 +65,59 @@ private extension HomeViewController {
         _ = presenter.configure(with: output)
     }
     
+    func setupGestures() {
+        let panGesture = foodMenuView.rx
+            .panGesture(configuration: { gestureRecognizer, delegate in
+                delegate.simultaneousRecognitionPolicy = .custom { gestureRecognizer, otherGestureRecognizer in
+                    return  !(otherGestureRecognizer.view?.isKind(of: UITableView.self) ?? false)
+                }
+            })
+            .share()
+        
+        panGesture
+            .when(.began,.changed)
+            .asTranslation()
+            // Calculate the target topOffset
+            .map { (translation, _) -> CGFloat in
+                self.topOffset += translation.y/10
+                return self.topOffset
+        }
+            // filter topOffset inside the pannable range from topOffsetCollapsed to topOffsetExpended
+            .filter { [unowned self] offset in
+                offset <= self.topOffsetCollapsed &&
+                    offset >= self.topOffsetExpended
+        }
+        .subscribe(onNext: { [unowned self] (offset) in
+            print("DEBUG: began panning...")
+            self.foodMenuView.snp.remakeConstraints { (make) -> Void in
+                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(offset)
+                make.left.right.bottom.equalTo(self.view)
+            }
+        })
+            .disposed(by: disposeBag)
+        
+        panGesture
+            .when(.ended)
+            // round foodMenuViewTopOffset to foodMenuViewTopOffsetCollapsed or foodMenuViewTopOffsetExpended
+            .map({ [unowned self] _ -> CGFloat in
+                self.topOffset = self.topOffset > self.topOffsetCollapsed/2
+                    ? self.topOffsetCollapsed
+                    : self.topOffsetExpended
+                return self.topOffset
+            })
+            .subscribe(onNext: { [unowned self] offset in
+                print("DEBUG: End panning...\(self.topOffset)")
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.foodMenuView.snp.remakeConstraints { (make) -> Void in
+                        make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(offset)
+                        make.left.right.bottom.equalTo(self.view)
+                    }
+                    self.view.layoutIfNeeded()
+                })
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func setupUI() {
         configureNavigationBar()
         view.addSubview(promotionsView)
@@ -72,8 +130,7 @@ private extension HomeViewController {
         view.addSubview(foodMenuView)
         foodMenuView.snp.makeConstraints { (make) -> Void in
             make.left.right.bottom.equalTo(view)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.foodMenuViewTopOffset)
-
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.topOffset)
         }
         
     }
