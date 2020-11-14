@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 final class CategoryCell: UICollectionViewCell {
     
@@ -69,11 +70,18 @@ extension CategoryCell {
     func setupUI() {
         
         addSubview(categoryNameLabel)
-        categoryNameLabel.anchor(top: topAnchor, left: leftAnchor,
-                                 bottom: bottomAnchor, right: rightAnchor)
+        categoryNameLabel.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(self)
+        }
         
         addSubview(selectBarIndicator)
-        selectBarIndicator.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
-                                  paddingLeft: 20, paddingRight: 20, height: 2)
+        selectBarIndicator.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(self).offset(20)
+            make.right.equalTo(self).offset(-20)
+            make.bottom.equalTo(self)
+            make.height.equalTo(2)
+
+        }
+        
     }
 }

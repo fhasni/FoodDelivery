@@ -60,7 +60,6 @@ final class FoodMenuView: UIView {
         button.setImage(UIImage(systemName: "cart"), for: .normal)
         button.backgroundColor = .white
         button.tintColor = .black
-        button.setDimensions(height: 56, width: 56)
         button.layer.cornerRadius = 56/2
         return button
     }()
@@ -69,8 +68,9 @@ final class FoodMenuView: UIView {
     init(presenter: HomePresenterInterface) {
         self.presenter = presenter
         super.init(frame: .zero)
-        setupView()
+        setupRx()
         setupUI()
+        setupGestures()
 
     }
     
@@ -83,7 +83,7 @@ final class FoodMenuView: UIView {
 // MARK: - Extensions -
 private extension FoodMenuView {
     
-    func setupView() {
+    func setupRx() {
         let input = presenter.configure(with: Home.ViewOutput())
         
         let categories = input.categories.share()
@@ -132,66 +132,69 @@ private extension FoodMenuView {
                 }
             })
             .disposed(by: disposeBag)
-                
-        let panGesture = pannableView.rx
-            .panGesture(configuration: { gestureRecognizer, delegate in
-                delegate.simultaneousRecognitionPolicy = .custom { gestureRecognizer, otherGestureRecognizer in
-                    return  otherGestureRecognizer.view != self.dishTableView
-                }
-            })
-            .share()
-        
-        panGesture.when(.began,.changed)
+    }
+    
+    func setupGestures() {
+         let panGesture = pannableView.rx
+             .panGesture(configuration: { gestureRecognizer, delegate in
+                 delegate.simultaneousRecognitionPolicy = .custom { gestureRecognizer, otherGestureRecognizer in
+                    return  !(otherGestureRecognizer.view?.isKind(of: UITableView.self) ?? false)
+                 }
+             })
+             .share()
+         
+         panGesture
+            .when(.began,.changed)
             .asTranslation()
             .subscribe(onNext: { [unowned self] in
-                print("DEBUG: Pan gesture began or changed")
-                
-                self.pannableView.transform = CGAffineTransform(translationX: $0.translation.x, y: 0)
-                self.pannableView.alpha = 0.5
-                self.dishTableView.isScrollEnabled = false
-                
+                 print("DEBUG: Pan gesture began or changed")
+                 
+                 self.pannableView.transform = CGAffineTransform(translationX: $0.translation.x, y: 0)
+                 self.pannableView.alpha = 0.5
+                 self.dishTableView.isScrollEnabled = false
+                 
             })
             .disposed(by: disposeBag)
 
-        panGesture.when(.ended)
+         panGesture
+            .when(.ended)
             .subscribe(onNext: { [unowned self] translation in
-                print("DEBUG: Pan gesture ended")
-                let screenWidth = UIScreen.main.bounds.width
+                 print("DEBUG: Pan gesture ended")
+                 let screenWidth = UIScreen.main.bounds.width
 
-                let restoreTableView = {
-                    self.dishTableView.isScrollEnabled = true
-                    self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
-                    self.pannableView.alpha = 1
-                }
-                
-                let loadNext: (Bool) -> () = { isNext in
-                    UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                        self.pannableView.transform = CGAffineTransform(translationX: isNext ? -screenWidth : screenWidth, y: 0)
-                        self.pannableView.alpha = 0
-                    }, completion: { finished in
-                        self.pannableView.transform = CGAffineTransform(translationX: isNext ? screenWidth : -screenWidth, y: 0)
-                        isNext ? self.selectNextCategory() : self.selectPreviousCategory()
-                        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                            self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
-                            self.pannableView.alpha = 1
-                        }, completion: { finished in
-                            self.dishTableView.isScrollEnabled = true
-                            
-                        })
-                    })
-                }
-                
-                if self.pannableView.transform.tx > screenWidth/10 {
-                    loadNext(false)
-                } else if self.pannableView.transform.tx < -screenWidth/10 {
-                    loadNext(true)
-                } else {
-                    restoreTableView()
-                }
-       
+                 let restoreTableView = {
+                     self.dishTableView.isScrollEnabled = true
+                     self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                     self.pannableView.alpha = 1
+                 }
+                 
+                 let loadNext: (Bool) -> () = { isNext in
+                     UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                         self.pannableView.transform = CGAffineTransform(translationX: isNext ? -screenWidth : screenWidth, y: 0)
+                         self.pannableView.alpha = 0
+                     }, completion: { finished in
+                         self.pannableView.transform = CGAffineTransform(translationX: isNext ? screenWidth : -screenWidth, y: 0)
+                         isNext ? self.selectNextCategory() : self.selectPreviousCategory()
+                         UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                             self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                             self.pannableView.alpha = 1
+                         }, completion: { finished in
+                             self.dishTableView.isScrollEnabled = true
+                             
+                         })
+                     })
+                 }
+                 
+                 if self.pannableView.transform.tx > screenWidth/10 {
+                     loadNext(false)
+                 } else if self.pannableView.transform.tx < -screenWidth/10 {
+                     loadNext(true)
+                 } else {
+                     restoreTableView()
+                 }
+        
             })
-           .disposed(by: disposeBag)
-
+            .disposed(by: disposeBag)
     }
     
     func setupUI() {
@@ -201,26 +204,33 @@ private extension FoodMenuView {
         backgroundColor = .white
         
         addSubview(headerView)
-        headerView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: 150)
+        headerView.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(self)
+            make.height.equalTo(150)
+        }
         
         headerView.addSubview(categoryCollectionView)
-        categoryCollectionView.anchor(left: headerView.leftAnchor,
-                                      bottom: headerView.bottomAnchor,
-                                      right: headerView.rightAnchor,
-                                      height: 100)
+        categoryCollectionView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalTo(headerView)
+            make.height.equalTo(100)
+        }
         
         addSubview(pannableView)
-        pannableView.anchor(top: headerView.bottomAnchor, left: leftAnchor,
-                               bottom: bottomAnchor, right: rightAnchor)
+        pannableView.snp.makeConstraints { (make) in
+            make.top.equalTo(headerView.snp.bottom)
+            make.left.bottom.right.equalTo(self)
+        }
         
         pannableView.addSubview(dishTableView)
-        dishTableView.anchor(top: pannableView.topAnchor, left: pannableView.leftAnchor,
-                             bottom: pannableView.bottomAnchor, right: pannableView.rightAnchor)
+        dishTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(pannableView)
+        }
         
         addSubview(openCartButton)
-        openCartButton.anchor(bottom: bottomAnchor, right: rightAnchor,
-                              paddingBottom: 24, paddingRight: 24)
-        
+        openCartButton.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(-24)
+            make.size.equalTo(56)
+        }
     }
     
     func selectCategory(at indexPath: IndexPath) {

@@ -28,6 +28,7 @@ PODS:
   - SDWebImage (5.9.2):
     - SDWebImage/Core (= 5.9.2)
   - SDWebImage/Core (5.9.2)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - JGProgressHUD (~> 2.0.3)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - RxGesture
   - RxSwift
   - SDWebImage (~> 5.0)
+  - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
@@ -51,6 +53,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
@@ -63,7 +66,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 630ea74b24255b3dff73b6a5ee0a33ba1136b07d
+PODFILE CHECKSUM: d44fc80e9106e443f375da8e590bdbb7f54a3111
 
 COCOAPODS: 1.10.0

@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import RxSwift
 import RxCocoa
+import SnapKit
 
 final class DishCell: UITableViewCell {
     
@@ -64,7 +65,6 @@ final class DishCell: UITableViewCell {
         button.backgroundColor = .black
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
-        button.setDimensions(height: 50, width: 120)
         button.layer.cornerRadius = 25
         return button
     }()
@@ -73,7 +73,7 @@ final class DishCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupView()
+        setupRx()
         setupUI()
     }
     
@@ -86,7 +86,7 @@ final class DishCell: UITableViewCell {
 
 private extension DishCell {
     
-    func setupView() {
+    func setupRx() {
         addToCartButton.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let id = self?.dish?.id else { return }
@@ -100,10 +100,9 @@ private extension DishCell {
         let cardView = CardView()
         
         addSubview(cardView)
-        cardView.anchor(top: topAnchor, left: leftAnchor,
-                        bottom: bottomAnchor, right: rightAnchor,
-                        paddingTop: 15, paddingLeft: 30,
-                        paddingBottom: 15, paddingRight: 30)
+        cardView.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(self).inset(UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 30))
+        }
         
         let dishViewContainer:  UIView = {
             let view = UIView()
@@ -114,8 +113,9 @@ private extension DishCell {
         }()
         
         cardView.addSubview(dishViewContainer)
-        dishViewContainer.anchor(top: cardView.topAnchor, left: cardView.leftAnchor,
-                                 bottom: cardView.bottomAnchor, right: cardView.rightAnchor)
+        dishViewContainer.snp.makeConstraints { (make) -> Void in
+            make.edges.equalTo(cardView)
+        }
         
         let detailsView : UIView = {
             let view = UIView()
@@ -123,25 +123,37 @@ private extension DishCell {
         }()
         
         dishViewContainer.addSubview(detailsView)
-        detailsView.anchor(left: dishViewContainer.leftAnchor, bottom: dishViewContainer.bottomAnchor,
-                           right: dishViewContainer.rightAnchor, height: 200)
+        detailsView.snp.makeConstraints { (make) -> Void in
+            make.left.bottom.right.equalTo(dishViewContainer)
+            make.height.equalTo(200)
+        }
         
         dishViewContainer.addSubview(dishImageView)
-        dishImageView.anchor(top: dishViewContainer.topAnchor, left: dishViewContainer.leftAnchor,
-                             bottom: detailsView.topAnchor, right: dishViewContainer.rightAnchor)
-    
+        dishImageView.snp.makeConstraints { (make) -> Void in
+            make.top.left.right.equalTo(dishViewContainer)
+            make.bottom.equalTo(detailsView.snp.top)
+        }
+        
         detailsView.addSubview(dishNameLabel)
-        dishNameLabel.anchor(top: detailsView.topAnchor, left: detailsView.leftAnchor,
-                             right: detailsView.rightAnchor, paddingTop: 10,
-                             paddingLeft: 20, paddingRight: 20)
+        dishNameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(detailsView).offset(10)
+            make.left.equalTo(detailsView).offset(20)
+            make.right.equalTo(detailsView).offset(-20)
+        }
         
         detailsView.addSubview(dishDescriptionLabel)
-        dishDescriptionLabel.anchor(top: dishNameLabel.bottomAnchor, left: detailsView.leftAnchor,
-                                    right: detailsView.rightAnchor, paddingTop: 10,
-                                    paddingLeft: 20, paddingRight: 20)
+        dishDescriptionLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(dishNameLabel.snp.bottom).offset(10)
+            make.left.equalTo(detailsView).offset(20)
+            make.right.equalTo(detailsView).offset(-20)
+        }
         
         detailsView.addSubview(addToCartButton)
-        addToCartButton.anchor(bottom: detailsView.bottomAnchor, right: detailsView.rightAnchor,
-                               paddingBottom: 20, paddingRight: 20)
+        addToCartButton.snp.makeConstraints { (make) -> Void in
+            make.bottom.equalTo(detailsView).offset(-20)
+            make.right.equalTo(detailsView).offset(-20)
+            make.height.equalTo(50)
+            make.width.equalTo(120)
+        }
     }
 }

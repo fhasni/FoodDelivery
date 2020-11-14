@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 private let reuseIdentifier = "PromotionCell"
 
@@ -67,13 +68,14 @@ final class PromotionsView: UIView {
     func setupUI() {
 
         addSubview(collectionView)
-        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
-        
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self)
+        }
         addSubview(pageControl)
-        pageControl.centerX(inView: self)
-        pageControl.anchor(bottom: bottomAnchor, paddingBottom: 50)
-//        pageControl.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
-        
+        pageControl.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self)
+            make.bottom.equalTo(self).offset(-70)
+        }
     }
     
     func resizePageControlCurrent () {
@@ -100,7 +102,10 @@ extension PromotionsView: UICollectionViewDataSource {
         imageView.clipsToBounds = true
 
         cell.addSubview(imageView)
-        imageView.anchor(top: cell.topAnchor, left: cell.leftAnchor, bottom: cell.bottomAnchor, right: cell.rightAnchor)
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalTo(cell)
+        }
+        
         cell.backgroundColor = .systemIndigo
         return cell
     }

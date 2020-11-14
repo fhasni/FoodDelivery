@@ -26,7 +26,7 @@ final class CartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupRx()
     }
 
 }
@@ -38,10 +38,10 @@ extension CartViewController: CartViewInterface {
 
 private extension CartViewController {
 
-    func setupView() {
+    func setupRx() {
         let output = Cart.ViewOutput()
 
-        let input = presenter.configure(with: output)
+        let _ = presenter.configure(with: output)
     }
 
 }

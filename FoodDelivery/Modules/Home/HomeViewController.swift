@@ -11,6 +11,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxGesture
+import SnapKit
 
 final class HomeViewController: UIViewController {
     
@@ -34,12 +36,13 @@ final class HomeViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
+    private var foodMenuViewTopOffset : CGFloat = 600
     
     // MARK: - Lifecycle -
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupRx()
         setupUI()
     }
     
@@ -52,21 +55,27 @@ extension HomeViewController: HomeViewInterface {
 
 private extension HomeViewController {
     
-    func setupView() {
+    func setupRx() {
         let output = Home.ViewOutput()
         _ = presenter.configure(with: output)
     }
     
     func setupUI() {
         configureNavigationBar()
-        
         view.addSubview(promotionsView)
-        promotionsView.anchor(top: view.topAnchor, left: view.leftAnchor,
-                              right: view.rightAnchor, height: 22+55+700)
-                
+        
+        promotionsView.snp.makeConstraints { (make) -> Void in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(700)
+        }
+        
         view.addSubview(foodMenuView)
-        foodMenuView.anchor(top: view.topAnchor, left: view.leftAnchor,
-                            bottom: view.bottomAnchor, right: view.rightAnchor)
+        foodMenuView.snp.makeConstraints { (make) -> Void in
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.foodMenuViewTopOffset)
+
+        }
+        
     }
     
     func configureNavigationBar() {

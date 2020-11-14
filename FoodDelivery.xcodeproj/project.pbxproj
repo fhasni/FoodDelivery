@@ -45,7 +45,6 @@
 		2CACE586254F72700088620D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE585254F72700088620D /* CardView.swift */; };
 		2CACE588254F98520088620D /* UIColor+AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACE587254F98520088620D /* UIColor+AppColors.swift */; };
 		2CAFC1F42544C9C500625BC3 /* PromotionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1F32544C9C500625BC3 /* PromotionsView.swift */; };
-		2CAFC1F62544D1CA00625BC3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1F52544D1CA00625BC3 /* UIView+Constraints.swift */; };
 		2CAFC1F92544D30E00625BC3 /* UIViewController+Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1F82544D30E00625BC3 /* UIViewController+Feedback.swift */; };
 		2CAFC1FB2544D34900625BC3 /* UIViewController+Gradiant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1FA2544D34900625BC3 /* UIViewController+Gradiant.swift */; };
 		2CAFC1FD2544D3BC00625BC3 /* UICollectionView+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFC1FC2544D3BC00625BC3 /* UICollectionView+Scroll.swift */; };
@@ -128,7 +127,6 @@
 		2CACE585254F72700088620D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2CACE587254F98520088620D /* UIColor+AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppColors.swift"; sourceTree = "<group>"; };
 		2CAFC1F32544C9C500625BC3 /* PromotionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsView.swift; sourceTree = "<group>"; };
-		2CAFC1F52544D1CA00625BC3 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		2CAFC1F82544D30E00625BC3 /* UIViewController+Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Feedback.swift"; sourceTree = "<group>"; };
 		2CAFC1FA2544D34900625BC3 /* UIViewController+Gradiant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Gradiant.swift"; sourceTree = "<group>"; };
 		2CAFC1FC2544D3BC00625BC3 /* UICollectionView+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Scroll.swift"; sourceTree = "<group>"; };
@@ -431,7 +429,6 @@
 		2CAFC1F72544D1E000625BC3 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				2CAFC1F52544D1CA00625BC3 /* UIView+Constraints.swift */,
 				2CAFC1F82544D30E00625BC3 /* UIViewController+Feedback.swift */,
 				2CAFC1FA2544D34900625BC3 /* UIViewController+Gradiant.swift */,
 				2CAFC1FC2544D3BC00625BC3 /* UICollectionView+Scroll.swift */,
@@ -768,7 +765,6 @@
 				2C6DC26325582BCB006B0DDD /* CartInterfaces.swift in Sources */,
 				2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */,
 				2C6DC253255771A8006B0DDD /* CartRepositoryInterface.swift in Sources */,
-				2CAFC1F62544D1CA00625BC3 /* UIView+Constraints.swift in Sources */,
 				2CACE566254CDB860088620D /* MenuRepositoryInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

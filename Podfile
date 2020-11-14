@@ -14,7 +14,8 @@ target 'FoodDelivery' do
   pod 'Moya-ObjectMapper/RxSwift'
   pod 'SDWebImage', '~> 5.0'
   pod 'JGProgressHUD', '~>2.0.3'
-  
+  pod 'SnapKit', '~> 5.0.0'
+
   target 'FoodDeliveryTests' do
     inherit! :search_paths
     # Pods for testing
