@@ -41,12 +41,47 @@ extension HomePresenter: HomePresenterInterface {
 
         let formatterOutput = formatter.format(for: formatterInput)
         
-        let categories = interactor.menu.asObservable()
-                                        .map { $0.categories ?? [] }
-                                        .observeOn(MainScheduler.instance)
-                                        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+        _ = output.openCartTapped
+            .subscribe(onNext: { [weak self] in
+                self?.handleOpenCartTap()
+            })
         
-        return Home.ViewInput(models: formatterOutput, categories: categories)
+        _ = output.addToCartTapped
+            .subscribe(onNext: { [weak self] dish in
+                self?.handleAddToCart(dish: dish)
+            })
+        
+        return Home.ViewInput(models: formatterOutput,
+                              categories: getCategories(),
+                              cartItemsCount: getCartItemsCount())
+    }
+    
+    func handleAddToCart(dish: Dish) {
+        print("handleAddToCart \(dish.id)")
+        interactor.addToCart(dish: dish)
+    }
+    
+    func handleRemoveFromCart(dish: Dish) {
+        interactor.removeFromCart(dish: dish)
+    }
+    
+    func getCartItemsCount () -> Driver<String> {
+        return interactor.getCartItems()
+                .map { "\($0.count)" }
+                .asDriver(onErrorDriveWith: .never())
+
+    }
+    
+    func handleOpenCartTap() {
+        wireframe.navigate(to: .cart)
+    }
+    
+    func getCategories () -> Driver<[Category]> {
+        return interactor.getMenu().asObservable()
+            .map { $0.categories ?? [] }
+            .observeOn(MainScheduler.instance)
+            .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+            .asDriver(onErrorDriveWith: .never())
     }
 
 }

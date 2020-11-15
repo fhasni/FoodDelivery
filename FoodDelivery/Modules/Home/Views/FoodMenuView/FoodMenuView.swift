@@ -64,6 +64,18 @@ final class FoodMenuView: UIView {
         return button
     }()
     
+    private lazy var cartCountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.font = .systemFont(ofSize: 12, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .white
+        label.backgroundColor = .appGreen
+        label.layer.cornerRadius = 26/2
+        label.clipsToBounds = true
+        return label
+    }()
+    
     // MARK: - Lifecycle -
     init(presenter: HomePresenterInterface) {
         self.presenter = presenter
@@ -84,26 +96,30 @@ final class FoodMenuView: UIView {
 private extension FoodMenuView {
     
     func setupRx() {
-        let input = presenter.configure(with: Home.ViewOutput())
+        let addToCartTapped = PublishSubject<Dish>()
+
+        let output = Home.ViewOutput(openCartTapped: openCartButton.rx.tap.asObservable(),
+                                     addToCartTapped: addToCartTapped)
         
-        let categories = input.categories.share()
+        let input = presenter.configure(with: output)
         
+        input.cartItemsCount
+            .drive(cartCountLabel.rx.text)
+            .disposed(by: disposeBag)
+
         // Bind categories to categoryCollectionView
-        categories
-            .bind(to: categoryCollectionView
-                            .rx.items(cellIdentifier: categoryReuseIdentifier,
-                                      cellType: CategoryCell.self)) { (row, category, cell) in
-                                        cell.category = category
+        input.categories
+            .drive(categoryCollectionView.rx.items(cellIdentifier: categoryReuseIdentifier, cellType: CategoryCell.self)) { (row, category, cell) in
+                cell.category = category
             }
             .disposed(by: disposeBag)
         
         // Select first item of categoryCollectionView
-        categories.subscribe(onNext: { [weak self] categories in
+        input.categories.asObservable().subscribe(onNext: { [weak self] categories in
                 if categories.count > 0 {
                     // wait to allow loading of categories
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-                        let indexPath = IndexPath(row: 0, section: 0)
-                        self?.selectCategory(at: indexPath)
+                        self?.selectCategory(at: IndexPath(row: 0, section: 0))
                     }
                 }
             })
@@ -115,21 +131,23 @@ private extension FoodMenuView {
                         .map { category -> [Dish] in
                             category.dishes
                         }
-                        .share()
-        
+                
         // Bind dishes to dishTableView
         dishes.bind(to: dishTableView.rx
-            .items(cellIdentifier: dishReuseIdentifier,
-                   cellType: DishCell.self)) { (row, dish, cell) in
-                    cell.dish = dish
+            .items(cellIdentifier: dishReuseIdentifier, cellType: DishCell.self)) { [unowned self] (row, dish, cell) in
+                cell.dish = dish
+                cell.addToCartButton.rx.tap
+                    .map { dish }
+                    .bind(to: addToCartTapped)
+                    .disposed(by: cell.rx.reuseBag)
+
             }
             .disposed(by: disposeBag)
         
         // Scroll to top dish after changing category
         dishes.subscribe(onNext: {[weak self] dishes in
                 if dishes.count > 0 {
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    self?.dishTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                    self?.dishTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
             })
             .disposed(by: disposeBag)
@@ -236,6 +254,13 @@ private extension FoodMenuView {
         openCartButton.snp.makeConstraints { (make) in
             make.bottom.right.equalTo(-24)
             make.size.equalTo(56)
+        }
+        
+        addSubview(cartCountLabel)
+        cartCountLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-65)
+            make.right.equalTo(-24)
+            make.size.equalTo(26)
         }
     }
     

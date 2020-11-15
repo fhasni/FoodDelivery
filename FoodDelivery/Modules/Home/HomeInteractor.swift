@@ -12,18 +12,33 @@ import Foundation
 import RxSwift
 
 final class HomeInteractor {
-    private let repositoty: MenuRepositoryInterface
-    
-    init(repositoty: MenuRepositoryInterface) {
-        self.repositoty = repositoty
+    private let menuRepositoty: MenuRepositoryInterface
+    private let cartRepositoty: CartRepositoryInterface
+
+    init(menuRepository: MenuRepositoryInterface, cartRepositoty: CartRepositoryInterface) {
+        self.menuRepositoty = menuRepository
+        self.cartRepositoty = cartRepositoty
     }
 }
 
 // MARK: - Extensions -
 
 extension HomeInteractor: HomeInteractorInterface {
-    var menu: Single<Menu> {
-        return repositoty.getMenu(restaurentId: "qwerty")
+
+    func getMenu() -> Single<Menu> {
+        return menuRepositoty.getMenu(restaurentId: "qwerty")
+    }
+    
+    func addToCart(dish: Dish) {
+        return cartRepositoty.add(dish: dish)
+    }
+    
+    func removeFromCart(dish: Dish) {
+        return cartRepositoty.remove(dish: dish)
+    }
+    
+    func getCartItems() -> Observable<[Dish]> {
+        return cartRepositoty.getItems().asObservable()
     }
     
 }

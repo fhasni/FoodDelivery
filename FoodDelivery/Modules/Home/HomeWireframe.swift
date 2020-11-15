@@ -25,7 +25,8 @@ final class HomeWireframe: BaseWireframe {
         super.init(viewController: moduleViewController)
 
         let formatter = HomeFormatter()
-        let interactor = HomeInteractor(repositoty: StubMenuRepository())
+        let interactor = HomeInteractor(menuRepository: StubMenuRepository(),
+                                        cartRepositoty: MemCartRepository())
         let presenter = HomePresenter(view: moduleViewController, formatter: formatter, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }
@@ -35,4 +36,9 @@ final class HomeWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension HomeWireframe: HomeWireframeInterface {
+    func navigate(to screen: HomeNavigationOption) {
+        let cartWireframe = CartWireframe()
+        cartWireframe.viewController.modalPresentationStyle = .popover
+        viewController.presentWireframe(cartWireframe, animated: true, completion: nil)
+    }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import SDWebImage
 import RxSwift
+import RxRelay
 import RxCocoa
 import SnapKit
 
@@ -29,6 +30,15 @@ final class DishCell: UITableViewCell {
             }
         }
     }
+    
+    lazy var addToCartButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.layer.cornerRadius = 25
+        return button
+    }()
     
     // MARK: - Private properties -
     
@@ -60,14 +70,7 @@ final class DishCell: UITableViewCell {
         return label
     }()
     
-    private lazy var addToCartButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
-        button.layer.cornerRadius = 25
-        return button
-    }()
+    
     
     // MARK: - Lifecycle -
 

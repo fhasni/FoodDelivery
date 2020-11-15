@@ -60,8 +60,8 @@ extension HomeViewController: HomeViewInterface {
 private extension HomeViewController {
     
     func setupRx() {
-        let output = Home.ViewOutput()
-        _ = presenter.configure(with: output)
+//        let output = Home.ViewOutput()
+//        _ = presenter.configure(with: output)
     }
     
     func setupUI() {

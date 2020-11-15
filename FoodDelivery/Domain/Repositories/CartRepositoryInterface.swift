@@ -6,9 +6,11 @@
 //  Copyright © 2020 fhasni. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import RxRelay
 
 protocol CartRepositoryInterface {
-    func addToCart(dish: Dish)
-    func removeFromCart(dish: Dish)
+    func add(dish: Dish)
+    func remove(dish: Dish)
+    func getItems() -> BehaviorRelay<[Dish]>
 }
