@@ -50,7 +50,6 @@ final class HomeViewController: UIViewController {
         setupUI()
         setupGestures()
     }
-    
 }
 
 // MARK: - Extensions -
@@ -75,25 +74,25 @@ private extension HomeViewController {
             .share()
         
         panGesture
-            .when(.began,.changed)
+            .when(.began, .changed)
             .asTranslation()
             // Calculate the target topOffset
             .map { (translation, _) -> CGFloat in
                 self.topOffset += translation.y/10
                 return self.topOffset
-        }
+            }
             // filter topOffset inside the pannable range from topOffsetCollapsed to topOffsetExpended
             .filter { [unowned self] offset in
                 offset <= self.topOffsetCollapsed &&
                     offset >= self.topOffsetExpended
-        }
-        .subscribe(onNext: { [unowned self] (offset) in
-            print("DEBUG: began panning...")
-            self.foodMenuView.snp.remakeConstraints { (make) -> Void in
-                make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(offset)
-                make.left.right.bottom.equalTo(self.view)
             }
-        })
+            .subscribe(onNext: { [unowned self] (offset) in
+                print("DEBUG: Panning changed...")
+                self.foodMenuView.snp.remakeConstraints { (make) -> Void in
+                    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(offset)
+                    make.left.right.bottom.equalTo(self.view)
+                }
+            })
             .disposed(by: disposeBag)
         
         panGesture
@@ -106,7 +105,7 @@ private extension HomeViewController {
                 return self.topOffset
             })
             .subscribe(onNext: { [unowned self] offset in
-                print("DEBUG: End panning...\(self.topOffset)")
+                print("DEBUG: Panning ended ...\(self.topOffset)")
                 UIView.animate(withDuration: 0.1, animations: {
                     self.foodMenuView.snp.remakeConstraints { (make) -> Void in
                         make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(offset)
