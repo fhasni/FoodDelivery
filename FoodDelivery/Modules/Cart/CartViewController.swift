@@ -12,23 +12,27 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+
 final class CartViewController: UIViewController {
-
+    
     // MARK: - Public properties -
-
+    
     var presenter: CartPresenterInterface!
-
+    
     // MARK: - Private properties -
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     private let disposeBag = DisposeBag()
-
+    
     // MARK: - Lifecycle -
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRx()
+        setupUI()
     }
-
+    
 }
 
 // MARK: - Extensions -
@@ -37,11 +41,48 @@ extension CartViewController: CartViewInterface {
 }
 
 private extension CartViewController {
-
+    
     func setupRx() {
         let output = Cart.ViewOutput()
-
+        
         let _ = presenter.configure(with: output)
     }
+    
+    func setupUI() {
+        setupNavigationBar()
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    func setupNavigationBar() {
+        configureNavigationbar(withTitle: "Cart",
+                               prefersLargeTitles: true)
+        
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: {
+                                                    let button = UIButton(type: .custom)
+                                                    button.tintColor = .black
+                                                    button.setImage(UIImage(systemName: "chevron.left") , for: .normal)
+                                                    button.setTitle("Menu", for: .normal)
+                                                    button.setTitleColor(button.tintColor, for: .normal)
+                                                    button.addTarget(self, action: #selector(backClicked), for: .touchUpInside)
+                                                    return button
+                                                }())
+    }
+    
+    @objc func backClicked() -> Void {
+       self.navigationController?.dismiss(animated: true)
+    }
+}
 
+extension CartViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = "Cell"
+        return cell
+    }
 }

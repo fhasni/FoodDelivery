@@ -189,6 +189,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C3BBC4325619CB7000C54AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2C59F2AA254458900046D9E3 = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +390,7 @@
 		2C6DC25925582BAE006B0DDD /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				2C3BBC4325619CB7000C54AC /* Views */,
 				2C6DC25B25582BCB006B0DDD /* Cart.storyboard */,
 				2C6DC25C25582BCB006B0DDD /* CartInterfaces.swift */,
 				2C6DC25D25582BCB006B0DDD /* CartPresenter.swift */,

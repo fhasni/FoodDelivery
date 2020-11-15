@@ -38,7 +38,10 @@ final class HomeWireframe: BaseWireframe {
 extension HomeWireframe: HomeWireframeInterface {
     func navigate(to screen: HomeNavigationOption) {
         let cartWireframe = CartWireframe()
-        cartWireframe.viewController.modalPresentationStyle = .popover
-        viewController.presentWireframe(cartWireframe, animated: true, completion: nil)
+//        cartWireframe.viewController.modalPresentationStyle = .popover
+//        viewController.presentWireframe(cartWireframe, animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: cartWireframe.viewController)
+        nav.modalPresentationStyle = .fullScreen
+        viewController.present(nav, animated: true)
     }
 }

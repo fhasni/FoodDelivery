@@ -65,7 +65,7 @@ private extension HomeViewController {
     }
     
     func setupUI() {
-        configureNavigationBar()
+        setupNavigationBar()
         
         view.addSubview(promotionsView)
         promotionsView.snp.makeConstraints { (make) -> Void in
@@ -134,7 +134,7 @@ private extension HomeViewController {
             .disposed(by: disposeBag)
     }
     
-    func configureNavigationBar() {
+    func setupNavigationBar() {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
     }
