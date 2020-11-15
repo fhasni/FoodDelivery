@@ -89,7 +89,8 @@ private extension FoodMenuView {
         let categories = input.categories.share()
         
         // Bind categories to categoryCollectionView
-        categories.bind(to: categoryCollectionView
+        categories
+            .bind(to: categoryCollectionView
                             .rx.items(cellIdentifier: categoryReuseIdentifier,
                                       cellType: CategoryCell.self)) { (row, category, cell) in
                                         cell.category = category
@@ -97,12 +98,12 @@ private extension FoodMenuView {
             .disposed(by: disposeBag)
         
         // Select first item of categoryCollectionView
-        categories.subscribe(onNext: {[unowned self] categories in
+        categories.subscribe(onNext: { [weak self] categories in
                 if categories.count > 0 {
                     // wait to allow loading of categories
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         let indexPath = IndexPath(row: 0, section: 0)
-                        self.selectCategory(at: indexPath)
+                        self?.selectCategory(at: indexPath)
                     }
                 }
             })
@@ -146,48 +147,53 @@ private extension FoodMenuView {
          panGesture
             .when(.began,.changed)
             .asTranslation()
-            .subscribe(onNext: { [unowned self] in
+            .subscribe(onNext: { [weak self] in
                  print("DEBUG: Pan gesture began or changed")
                  
-                 self.pannableView.transform = CGAffineTransform(translationX: $0.translation.x, y: 0)
-                 self.pannableView.alpha = 0.5
-                 self.dishTableView.isScrollEnabled = false
+                 self?.pannableView.transform = CGAffineTransform(translationX: $0.translation.x, y: 0)
+                 self?.pannableView.alpha = 0.5
+                 self?.dishTableView.isScrollEnabled = false
                  
             })
             .disposed(by: disposeBag)
 
          panGesture
             .when(.ended)
-            .subscribe(onNext: { [unowned self] translation in
+            .subscribe(onNext: { [weak self] translation in
                  print("DEBUG: Pan gesture ended")
                  let screenWidth = UIScreen.main.bounds.width
 
                  let restoreTableView = {
-                     self.dishTableView.isScrollEnabled = true
-                     self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
-                     self.pannableView.alpha = 1
+                     self?.dishTableView.isScrollEnabled = true
+                     self?.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                     self?.pannableView.alpha = 1
                  }
                  
                  let loadNext: (Bool) -> () = { isNext in
                      UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                         self.pannableView.transform = CGAffineTransform(translationX: isNext ? -screenWidth : screenWidth, y: 0)
-                         self.pannableView.alpha = 0
+                         self?.pannableView.transform = CGAffineTransform(translationX: isNext ? -screenWidth : screenWidth, y: 0)
+                         self?.pannableView.alpha = 0
                      }, completion: { finished in
-                         self.pannableView.transform = CGAffineTransform(translationX: isNext ? screenWidth : -screenWidth, y: 0)
-                         isNext ? self.selectNextCategory() : self.selectPreviousCategory()
+                         self?.pannableView.transform = CGAffineTransform(translationX: isNext ? screenWidth : -screenWidth, y: 0)
+                         isNext ? self?.selectNextCategory() : self?.selectPreviousCategory()
                          UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-                             self.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
-                             self.pannableView.alpha = 1
+                             self?.pannableView.transform = CGAffineTransform(translationX: 0, y: 0)
+                             self?.pannableView.alpha = 1
                          }, completion: { finished in
-                             self.dishTableView.isScrollEnabled = true
+                             self?.dishTableView.isScrollEnabled = true
                              
                          })
                      })
                  }
                  
-                 if self.pannableView.transform.tx > screenWidth/10 {
+                guard let tx = self?.pannableView.transform.tx else {
+                    restoreTableView()
+                    return
+                }
+                
+                 if tx > screenWidth/10 {
                      loadNext(false)
-                 } else if self.pannableView.transform.tx < -screenWidth/10 {
+                 } else if tx < -screenWidth/10 {
                      loadNext(true)
                  } else {
                      restoreTableView()
