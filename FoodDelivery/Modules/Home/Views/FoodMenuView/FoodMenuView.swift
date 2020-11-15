@@ -47,6 +47,7 @@ final class FoodMenuView: UIView {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
         return tableView
     }()
     
@@ -67,13 +68,14 @@ final class FoodMenuView: UIView {
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textAlignment = .center
         label.textColor = .white
-        label.backgroundColor = .appGreen
+        label.backgroundColor = .systemGreen
         label.layer.cornerRadius = 26/2
         label.clipsToBounds = true
         return label
     }()
     
     // MARK: - Lifecycle -
+    
     init(presenter: HomePresenterInterface) {
         self.presenter = presenter
         super.init(frame: .zero)

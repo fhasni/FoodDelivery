@@ -21,7 +21,16 @@ final class CartViewController: UIViewController {
     
     // MARK: - Private properties -
     
-    @IBOutlet weak var tableView: UITableView!
+    private let cartTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(CartItemCell.self, forCellReuseIdentifier: CartItemCell.reuseIdentifier)
+        tableView.rowHeight = 200
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        return tableView
+    }()
     
     private let disposeBag = DisposeBag()
     
@@ -45,14 +54,24 @@ private extension CartViewController {
     func setupRx() {
         let output = Cart.ViewOutput()
         
-        let _ = presenter.configure(with: output)
+        let input = presenter.configure(with: output)
+        
+        input.cartItems
+        .drive(cartTableView.rx.items(cellIdentifier: CartItemCell.reuseIdentifier, cellType: CartItemCell.self)) { (row, cartItem, cell) in
+            cell.cartItem = cartItem
+        }
+        .disposed(by: disposeBag)
     }
     
     func setupUI() {
         setupNavigationBar()
-        tableView.delegate = self
-        tableView.dataSource = self
+//        setupTableView()
+        view.addSubview(cartTableView)
+        cartTableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view)
+        }
     }
+    
     
     func setupNavigationBar() {
         configureNavigationbar(withTitle: "Cart",
@@ -70,19 +89,31 @@ private extension CartViewController {
                                                 }())
     }
     
+//    func setupTableView() {
+////        cartTableView.delegate = self
+////        cartTableView.dataSource = self
+//
+//        cartTableView.register(CartItemCell.self, forCellReuseIdentifier: CartItemCell.reuseIdentifier)
+//        cartTableView.rowHeight = 200
+//        cartTableView.separatorStyle = .none
+//        cartTableView.allowsSelection = false
+//        cartTableView.showsVerticalScrollIndicator = false
+//    }
+    
     @objc func backClicked() -> Void {
        self.navigationController?.dismiss(animated: true)
     }
 }
 
-extension CartViewController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Cell"
-        return cell
-    }
-}
+//extension CartViewController : UITableViewDelegate, UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 10
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: CartItemCell.reuseIdentifier, for: indexPath) as! CartItemCell
+//        let dish = Dish(id: "", name: "Seafood Sauté or Alfredo", price: 19.5, image: "https://bit.ly/35yh09N", description: "")
+//        cell.cartItem = CartItem(dish:dish, count: 1)
+//        return cell
+//    }
+//}

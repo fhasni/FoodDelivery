@@ -27,6 +27,7 @@ protocol CartFormatterInterface: FormatterInterface {
 }
 
 protocol CartInteractorInterface: InteractorInterface {
+    func getCartItems() -> Observable<[CartItem]>
 }
 
 enum Cart {
@@ -36,6 +37,7 @@ enum Cart {
 
     struct ViewInput {
         let models: FormatterOutput
+        let cartItems: Driver<[CartItem]>
     }
 
     struct FormatterInput {

@@ -8,8 +8,8 @@
 
 import Foundation
 
-
 struct Dish {
+    
     var id: String!
     
     var name: String!
@@ -19,4 +19,5 @@ struct Dish {
     var image: String!
     
     var description: String!
+    
 }

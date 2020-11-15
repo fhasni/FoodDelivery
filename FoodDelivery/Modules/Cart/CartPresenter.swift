@@ -41,7 +41,7 @@ extension CartPresenter: CartPresenterInterface {
 
         let formatterOutput = formatter.format(for: formatterInput)
 
-        return Cart.ViewInput(models: formatterOutput)
+        return Cart.ViewInput(models: formatterOutput, cartItems: interactor.getCartItems().asDriver(onErrorJustReturn: []))
     }
 
 }

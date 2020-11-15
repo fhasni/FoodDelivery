@@ -8,8 +8,8 @@
 
 import Foundation
 
-
 struct Category {
+    
     var id: String!
     
     var name: String!
@@ -17,4 +17,5 @@ struct Category {
     var image: String!
     
     var dishes: [Dish]!
+    
 }

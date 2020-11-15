@@ -16,13 +16,15 @@ import SnapKit
 final class DishCell: UITableViewCell {
     
     // MARK: - Public properties -
+    
     static let reuseIdentifier = "DishCell"
+    
     var dish : Dish? {
         didSet {
             dishNameLabel.text = dish?.name
             dishDescriptionLabel.text = dish?.description
             if let price = dish?.price {
-                addToCartButton.setTitle("\(price) usd", for: .normal)
+                addToCartButton.setTitle("$\(price)", for: .normal)
             }
             
             if let image = dish?.image {
@@ -67,8 +69,6 @@ final class DishCell: UITableViewCell {
         label.textColor = .lightGray
         return label
     }()
-    
-    
     
     // MARK: - Lifecycle -
 

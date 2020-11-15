@@ -14,25 +14,10 @@
                     <view key="view" contentMode="scaleToFill" id="Z2g-4m-atm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H64-KI-McS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="3pi-N7-nbV" firstAttribute="bottom" secondItem="H64-KI-McS" secondAttribute="bottom" id="GG2-gl-PJh"/>
-                            <constraint firstItem="3pi-N7-nbV" firstAttribute="trailing" secondItem="H64-KI-McS" secondAttribute="trailing" id="dlb-7G-W8v"/>
-                            <constraint firstItem="H64-KI-McS" firstAttribute="leading" secondItem="3pi-N7-nbV" secondAttribute="leading" id="oxx-mT-meQ"/>
-                            <constraint firstItem="H64-KI-McS" firstAttribute="top" secondItem="3pi-N7-nbV" secondAttribute="top" id="t3g-cu-mCG"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="3pi-N7-nbV"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Cart" id="c9M-MP-YKz"/>
-                    <connections>
-                        <outlet property="tableView" destination="H64-KI-McS" id="Yst-Th-xm7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rle-ol-2Ax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

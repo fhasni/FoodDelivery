@@ -25,7 +25,7 @@ final class CartWireframe: BaseWireframe {
         super.init(viewController: moduleViewController)
 
         let formatter = CartFormatter()
-        let interactor = CartInteractor()
+        let interactor = CartInteractor(cartRepositoty: MemCartRepository())
         let presenter = CartPresenter(view: moduleViewController, formatter: formatter, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }

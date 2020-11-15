@@ -10,6 +10,7 @@
 import Foundation
 
 struct Menu {
+    
     var id: String!
     
     var name: String!
@@ -17,5 +18,6 @@ struct Menu {
     var image: String!
     
     var categories: [Category]!
+    
 }
 
