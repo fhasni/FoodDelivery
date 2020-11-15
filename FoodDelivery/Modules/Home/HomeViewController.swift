@@ -64,6 +64,23 @@ private extension HomeViewController {
         _ = presenter.configure(with: output)
     }
     
+    func setupUI() {
+        configureNavigationBar()
+        
+        view.addSubview(promotionsView)
+        promotionsView.snp.makeConstraints { (make) -> Void in
+            make.top.left.right.equalTo(view)
+            make.height.equalTo(700)
+        }
+        
+        view.addSubview(foodMenuView)
+        foodMenuView.snp.makeConstraints { (make) -> Void in
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.topOffset)
+        }
+        
+    }
+    
     func setupGestures() {
         let panGesture = foodMenuView.rx
             .panGesture(configuration: { gestureRecognizer, delegate in
@@ -115,23 +132,6 @@ private extension HomeViewController {
                 })
             })
             .disposed(by: disposeBag)
-    }
-    
-    func setupUI() {
-        configureNavigationBar()
-        view.addSubview(promotionsView)
-        
-        promotionsView.snp.makeConstraints { (make) -> Void in
-            make.top.left.right.equalTo(view)
-            make.height.equalTo(700)
-        }
-        
-        view.addSubview(foodMenuView)
-        foodMenuView.snp.makeConstraints { (make) -> Void in
-            make.left.right.bottom.equalTo(view)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(self.topOffset)
-        }
-        
     }
     
     func configureNavigationBar() {
