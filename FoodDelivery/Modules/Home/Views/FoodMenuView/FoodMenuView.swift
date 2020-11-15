@@ -134,7 +134,7 @@ private extension FoodMenuView {
                 
         // Bind dishes to dishTableView
         dishes.bind(to: dishTableView.rx
-            .items(cellIdentifier: dishReuseIdentifier, cellType: DishCell.self)) { [unowned self] (row, dish, cell) in
+            .items(cellIdentifier: dishReuseIdentifier, cellType: DishCell.self)) { (row, dish, cell) in
                 cell.dish = dish
                 cell.addToCartButton.rx.tap
                     .map { dish }
