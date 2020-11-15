@@ -14,7 +14,8 @@ import SnapKit
 final class CategoryCell: UICollectionViewCell {
     
     // MARK: - Public properties -
-
+    static let reuseIdentifier = "CategoryCell"
+    
     var category: Category? {
         didSet {
             categoryNameLabel.text = category?.name

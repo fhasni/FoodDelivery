@@ -11,9 +11,6 @@ import RxSwift
 import RxCocoa
 import RxGesture
 
-private let categoryReuseIdentifier = "CategoryCell"
-private let dishReuseIdentifier = "DishCell"
-
 final class FoodMenuView: UIView {
     
     // MARK: - Public properties -
@@ -38,14 +35,14 @@ final class FoodMenuView: UIView {
         cv.contentInsetAdjustmentBehavior = .never
         cv.showsHorizontalScrollIndicator = false
         cv.contentOffset = .zero
-        cv.register(CategoryCell.self, forCellWithReuseIdentifier: categoryReuseIdentifier)
+        cv.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIdentifier)
         cv.backgroundColor = .white
         return cv
     }()
     
     private lazy var dishTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.register(DishCell.self, forCellReuseIdentifier: dishReuseIdentifier)
+        tableView.register(DishCell.self, forCellReuseIdentifier: DishCell.reuseIdentifier)
         tableView.rowHeight = 550
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
@@ -109,7 +106,7 @@ private extension FoodMenuView {
 
         // Bind categories to categoryCollectionView
         input.categories
-            .drive(categoryCollectionView.rx.items(cellIdentifier: categoryReuseIdentifier, cellType: CategoryCell.self)) { (row, category, cell) in
+            .drive(categoryCollectionView.rx.items(cellIdentifier: CategoryCell.reuseIdentifier, cellType: CategoryCell.self)) { (row, category, cell) in
                 cell.category = category
             }
             .disposed(by: disposeBag)
@@ -134,7 +131,7 @@ private extension FoodMenuView {
                 
         // Bind dishes to dishTableView
         dishes.bind(to: dishTableView.rx
-            .items(cellIdentifier: dishReuseIdentifier, cellType: DishCell.self)) { (row, dish, cell) in
+            .items(cellIdentifier: DishCell.reuseIdentifier, cellType: DishCell.self)) { (row, dish, cell) in
                 cell.dish = dish
                 cell.addToCartButton.rx.tap
                     .map { dish }

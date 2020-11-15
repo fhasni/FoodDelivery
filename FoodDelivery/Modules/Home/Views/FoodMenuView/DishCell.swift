@@ -16,7 +16,7 @@ import SnapKit
 final class DishCell: UITableViewCell {
     
     // MARK: - Public properties -
-    
+    static let reuseIdentifier = "DishCell"
     var dish : Dish? {
         didSet {
             dishNameLabel.text = dish?.name
@@ -41,8 +41,6 @@ final class DishCell: UITableViewCell {
     }()
     
     // MARK: - Private properties -
-    
-    private let disposeBag = DisposeBag()
 
     private lazy var dishImageView : UIImageView = {
         let imageView = UIImageView()
@@ -76,7 +74,6 @@ final class DishCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupRx()
         setupUI()
     }
     
@@ -88,15 +85,6 @@ final class DishCell: UITableViewCell {
 // MARK: - Extensions -
 
 private extension DishCell {
-    
-    func setupRx() {
-        addToCartButton.rx.tap
-            .subscribe(onNext: { [weak self] _ in
-                guard let id = self?.dish?.id else { return }
-                print("DEBUG: Add dish cart with id: \(id)")
-            })
-            .disposed(by: disposeBag)
-    }
     
     func setupUI() {
         
