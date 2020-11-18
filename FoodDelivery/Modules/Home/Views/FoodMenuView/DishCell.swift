@@ -88,9 +88,14 @@ private extension DishCell {
     
     func setupUI() {
         
-        let cardView = CardView()
+//        let cardView = CardView()
+        let cardView: UIView = {
+            let view = UIView()
+            view.applyShadow()
+            return view
+        }()
         
-        addSubview(cardView)
+        contentView.addSubview(cardView)
         cardView.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(self).inset(UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 30))
         }

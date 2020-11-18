@@ -6,15 +6,14 @@ target 'FoodDelivery' do
   use_frameworks!
 
   # Pods for FoodDelivery
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod "RxGesture"
-  pod 'Moya/RxSwift'
-  pod 'ObjectMapper'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
+  pod "RxGesture", '~> 3'
+  pod 'Moya/RxSwift', '~> 14'
   pod 'Moya-ObjectMapper/RxSwift'
-  pod 'SDWebImage', '~> 5.0'
-  pod 'JGProgressHUD', '~>2.0.3'
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'SDWebImage', '~> 5'
+  pod 'JGProgressHUD', '~> 2'
+  pod 'SnapKit', '~> 5'
 
   target 'FoodDeliveryTests' do
     inherit! :search_paths

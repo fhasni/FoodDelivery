@@ -41,6 +41,23 @@ extension CartPresenter: CartPresenterInterface {
 
         let formatterOutput = formatter.format(for: formatterInput)
 
+        _ = output.checkoutTapped
+            .subscribe(onNext: {
+                print("DEBUG: checkoutTapped")
+            })
+        _ = output.deleteCartItemTapped
+            .subscribe(onNext: { item in
+                print("DEBUG: deleteCartItemTapped with item \(item.id)")
+            })
+        _ = output.incrementCartItemTapped
+            .subscribe(onNext: { item in
+                print("DEBUG: incrementCartItemTapped with item \(item.id)")
+            })
+        _ = output.decrementCartItemTapped
+            .subscribe(onNext: { item in
+                print("DEBUG: decrementCartItemTapped with item \(item.id)")
+            })
+        
         return Cart.ViewInput(models: formatterOutput, cartItems: interactor.getCartItems().asDriver(onErrorJustReturn: []))
     }
 

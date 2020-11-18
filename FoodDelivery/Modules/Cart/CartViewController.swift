@@ -32,6 +32,16 @@ final class CartViewController: UIViewController {
         return tableView
     }()
     
+    private let checkoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "creditcard"), for: .normal)
+        button.backgroundColor = .white
+        button.tintColor = .black
+        button.layer.cornerRadius = 56/2
+        button.applyShadow()
+        return button
+    }()
+    
     private let disposeBag = DisposeBag()
     
     // MARK: - Lifecycle -
@@ -52,23 +62,48 @@ extension CartViewController: CartViewInterface {
 private extension CartViewController {
     
     func setupRx() {
-        let output = Cart.ViewOutput()
+        let deleteCartItemTapped = PublishSubject<CartItem>()
+        let decrementCartItemTapped = PublishSubject<CartItem>()
+        let incrementCartItemTapped = PublishSubject<CartItem>()
+        
+        let output = Cart.ViewOutput(checkoutTapped: checkoutButton.rx.tap.asObservable(),
+                                     deleteCartItemTapped: deleteCartItemTapped,
+                                     incrementCartItemTapped: incrementCartItemTapped,
+                                     decrementCartItemTapped: decrementCartItemTapped)
         
         let input = presenter.configure(with: output)
         
         input.cartItems
         .drive(cartTableView.rx.items(cellIdentifier: CartItemCell.reuseIdentifier, cellType: CartItemCell.self)) { (row, cartItem, cell) in
             cell.cartItem = cartItem
+            cell.deleteItemButton.rx.tap
+                .map { cartItem }
+                .bind(to: deleteCartItemTapped)
+                .disposed(by: cell.rx.reuseBag)
+            cell.incrementItemButton.rx.tap
+                .map { cartItem }
+                .bind(to: incrementCartItemTapped)
+                .disposed(by: cell.rx.reuseBag)
+            cell.decrementItemButton.rx.tap
+                .map { cartItem }
+                .bind(to: decrementCartItemTapped)
+                .disposed(by: cell.rx.reuseBag)
         }
         .disposed(by: disposeBag)
     }
     
     func setupUI() {
         setupNavigationBar()
-//        setupTableView()
+                
         view.addSubview(cartTableView)
         cartTableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        view.addSubview(checkoutButton)
+        checkoutButton.snp.makeConstraints { (make) in
+            make.bottom.right.equalTo(-24)
+            make.size.equalTo(56)
         }
     }
     

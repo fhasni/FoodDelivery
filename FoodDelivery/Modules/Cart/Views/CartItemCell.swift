@@ -26,7 +26,7 @@ class CartItemCell: UITableViewCell {
         }
     }
     
-    lazy var removeItemButton: UIButton = {
+    lazy var deleteItemButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.systemRed.withAlphaComponent(0.7)
         button.setTitleColor(.white, for: .normal)
@@ -107,11 +107,16 @@ private extension CartItemCell {
     
     func setupUI() {
         
-        let cardView = CardView()
-        
-        addSubview(cardView)
+//        let cardView = CardView()
+        let cardView: UIView = {
+            let view = UIView()
+            view.applyShadow()
+            return view
+        }()
+
+        contentView.addSubview(cardView)
         cardView.snp.makeConstraints { (make) -> Void in
-            make.edges.equalTo(self).inset(UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 30))
+            make.edges.equalTo(contentView).inset(UIEdgeInsets(top: 15, left: 30, bottom: 15, right: 30))
         }
         
         let dishViewContainer:  UIView = {
@@ -127,6 +132,14 @@ private extension CartItemCell {
             make.edges.equalTo(cardView)
         }
         
+        dishViewContainer.addSubview(dishImageView)
+        dishImageView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(dishViewContainer)
+            make.left.equalTo(dishViewContainer)
+            make.bottom.equalTo(dishViewContainer)
+            make.width.equalTo(dishImageView.snp.height).multipliedBy(0.66)
+        }
+        
         let detailsView : UIView = {
             let view = UIView()
             return view
@@ -134,16 +147,10 @@ private extension CartItemCell {
         
         dishViewContainer.addSubview(detailsView)
         detailsView.snp.makeConstraints { (make) -> Void in
-            make.top.right.bottom.equalTo(dishViewContainer)
-            make.width.equalTo(200)
-        }
-        
-        dishViewContainer.addSubview(dishImageView)
-        dishImageView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(dishViewContainer).offset(10)
-            make.left.equalTo(dishViewContainer).offset(10)
+            make.right.equalTo(dishViewContainer).offset(-10)
             make.bottom.equalTo(dishViewContainer).offset(-10)
-            make.right.equalTo(detailsView.snp.left).offset(-10)
+            make.left.equalTo(dishImageView.snp.right)
         }
         
         detailsView.addSubview(nameLabel)
@@ -153,8 +160,8 @@ private extension CartItemCell {
             make.right.equalTo(detailsView).offset(-20)
         }
         
-        detailsView.addSubview(removeItemButton)
-        removeItemButton.snp.makeConstraints { (make) -> Void in
+        detailsView.addSubview(deleteItemButton)
+        deleteItemButton.snp.makeConstraints { (make) -> Void in
             make.right.bottom.equalTo(detailsView).offset(-20)
             make.width.height.equalTo(30)
         }
@@ -175,7 +182,7 @@ private extension CartItemCell {
         
         detailsView.addSubview(priceDetailsLabel)
         priceDetailsLabel.snp.makeConstraints { (make) -> Void in
-            make.bottom.equalTo(removeItemButton.snp.top).offset(-10)
+            make.bottom.equalTo(deleteItemButton.snp.top).offset(-10)
             make.left.equalTo(detailsView).offset(20)
             make.right.equalTo(detailsView).offset(-20)
         }

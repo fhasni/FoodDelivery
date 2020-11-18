@@ -70,12 +70,12 @@ final class CategoryCell: UICollectionViewCell {
 extension CategoryCell {
     func setupUI() {
         
-        addSubview(categoryNameLabel)
+        contentView.addSubview(categoryNameLabel)
         categoryNameLabel.snp.makeConstraints { (make) -> Void in
             make.edges.equalTo(self)
         }
         
-        addSubview(selectBarIndicator)
+        contentView.addSubview(selectBarIndicator)
         selectBarIndicator.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(self).offset(20)
             make.right.equalTo(self).offset(-20)

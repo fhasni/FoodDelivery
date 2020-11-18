@@ -33,6 +33,10 @@ protocol CartInteractorInterface: InteractorInterface {
 enum Cart {
 
     struct ViewOutput {
+        let checkoutTapped: Observable<Void>
+        let deleteCartItemTapped: PublishSubject<CartItem>
+        let incrementCartItemTapped: PublishSubject<CartItem>
+        let decrementCartItemTapped: PublishSubject<CartItem>
     }
 
     struct ViewInput {

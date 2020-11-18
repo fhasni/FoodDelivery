@@ -12,6 +12,7 @@
 		2C0742FE2545A593002BE22A /* RestaurentMenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */; };
 		2C0743012545C09D002BE22A /* Restaurant+ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0743002545C09D002BE22A /* Restaurant+ObjectMapper.swift */; };
 		2C1AAACD25479C2900C5B794 /* FormatterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1AAACC25479C2900C5B794 /* FormatterInterface.swift */; };
+		2C25AB142564A52200A65E1C /* UIView+shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C25AB132564A52200A65E1C /* UIView+shadow.swift */; };
 		2C3BBC42256104EF000C54AC /* Reactive+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BBC41256104EE000C54AC /* Reactive+Reusable.swift */; };
 		2C3BBC4B25619ECD000C54AC /* CartItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BBC4A25619ECD000C54AC /* CartItemCell.swift */; };
 		2C3BBC4D2561C12B000C54AC /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BBC4C2561C12B000C54AC /* CartItem.swift */; };
@@ -90,6 +91,7 @@
 		2C0742FD2545A593002BE22A /* RestaurentMenuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurentMenuService.swift; sourceTree = "<group>"; };
 		2C0743002545C09D002BE22A /* Restaurant+ObjectMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restaurant+ObjectMapper.swift"; sourceTree = "<group>"; };
 		2C1AAACC25479C2900C5B794 /* FormatterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterInterface.swift; sourceTree = "<group>"; };
+		2C25AB132564A52200A65E1C /* UIView+shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+shadow.swift"; sourceTree = "<group>"; };
 		2C3BBC41256104EE000C54AC /* Reactive+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+Reusable.swift"; sourceTree = "<group>"; };
 		2C3BBC4A25619ECD000C54AC /* CartItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemCell.swift; sourceTree = "<group>"; };
 		2C3BBC4C2561C12B000C54AC /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				2CAFC1FE2544D44900625BC3 /* UIViewController+NavigationBar.swift */,
 				2CACE582254F60C10088620D /* UIView+RoundCorners.swift */,
 				2C3BBC41256104EE000C54AC /* Reactive+Reusable.swift */,
+				2C25AB132564A52200A65E1C /* UIView+shadow.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				2CACE57F254F41510088620D /* StubMenuRepository.swift in Sources */,
 				2C6DC26625582BCB006B0DDD /* CartFormatter.swift in Sources */,
 				2C6DC26325582BCB006B0DDD /* CartInterfaces.swift in Sources */,
+				2C25AB142564A52200A65E1C /* UIView+shadow.swift in Sources */,
 				2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */,
 				2C6DC253255771A8006B0DDD /* CartRepositoryInterface.swift in Sources */,
 				2CACE566254CDB860088620D /* MenuRepositoryInterface.swift in Sources */,
@@ -886,7 +890,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -940,7 +944,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

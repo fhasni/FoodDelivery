@@ -21,10 +21,7 @@ final class FoodMenuView: UIView {
     
     private let disposeBag = DisposeBag()
     
-    private let headerView : UIView = {
-        let view = UIView()
-        return view
-    }()
+    
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -59,6 +56,7 @@ final class FoodMenuView: UIView {
         button.backgroundColor = .white
         button.tintColor = .black
         button.layer.cornerRadius = 56/2
+        button.applyShadow()
         return button
     }()
     
@@ -226,6 +224,8 @@ private extension FoodMenuView {
         clipsToBounds = true
         backgroundColor = .white
         
+        let headerView = UIView()
+        
         addSubview(headerView)
         headerView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self)
@@ -246,7 +246,8 @@ private extension FoodMenuView {
         
         pannableView.addSubview(dishTableView)
         dishTableView.snp.makeConstraints { (make) in
-            make.edges.equalTo(pannableView)
+            make.top.left.right.equalTo(pannableView)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
         addSubview(openCartButton)
