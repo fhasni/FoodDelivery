@@ -21,8 +21,6 @@ final class FoodMenuView: UIView {
     
     private let disposeBag = DisposeBag()
     
-    
-    
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -40,7 +38,7 @@ final class FoodMenuView: UIView {
     private lazy var dishTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(DishCell.self, forCellReuseIdentifier: DishCell.reuseIdentifier)
-        tableView.rowHeight = 550
+        tableView.rowHeight = UIScreen.main.bounds.height * 0.65
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false

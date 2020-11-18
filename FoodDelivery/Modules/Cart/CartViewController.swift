@@ -29,7 +29,7 @@ final class CartViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 150))
-        footerView.backgroundColor = .systemPink
+//        footerView.backgroundColor = .systemPink
         tableView.tableFooterView = footerView
         return tableView
     }()

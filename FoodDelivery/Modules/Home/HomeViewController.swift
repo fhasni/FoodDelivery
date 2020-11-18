@@ -36,7 +36,7 @@ final class HomeViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private let topOffsetCollapsed : CGFloat = 600 // offset of food menu view when it's collapsed
+    private let topOffsetCollapsed : CGFloat = 0.7 * UIScreen.main.bounds.height // offset of food menu view when it's collapsed
     
     private let topOffsetExpended : CGFloat = 0 // offset of food menu view when it's expended
     
@@ -70,7 +70,7 @@ private extension HomeViewController {
         view.addSubview(promotionsView)
         promotionsView.snp.makeConstraints { (make) -> Void in
             make.top.left.right.equalTo(view)
-            make.height.equalTo(700)
+            make.height.equalTo(UIScreen.main.bounds.height*0.8)
         }
         
         view.addSubview(foodMenuView)
