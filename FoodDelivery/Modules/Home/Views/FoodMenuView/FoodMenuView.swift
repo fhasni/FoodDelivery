@@ -227,7 +227,7 @@ private extension FoodMenuView {
         addSubview(headerView)
         headerView.snp.makeConstraints { (make) in
             make.top.left.right.equalTo(self)
-            make.height.equalTo(150)
+            make.height.equalTo(120)
         }
         
         headerView.addSubview(categoryCollectionView)
