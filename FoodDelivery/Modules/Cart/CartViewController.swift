@@ -34,15 +34,15 @@ final class CartViewController: UIViewController {
         return tableView
     }()
     
-    private let checkoutButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "creditcard"), for: .normal)
-        button.backgroundColor = .white
-        button.tintColor = .black
-        button.layer.cornerRadius = 56/2
-        button.applyShadow()
-        return button
-    }()
+//    private let checkoutButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setImage(UIImage(systemName: "creditcard"), for: .normal)
+//        button.backgroundColor = .white
+//        button.tintColor = .black
+//        button.layer.cornerRadius = 56/2
+//        button.applyShadow()
+//        return button
+//    }()
     
     private let footerCheckoutButton: UIButton = {
         let button = UIButton(type: .system)
@@ -59,7 +59,7 @@ final class CartViewController: UIViewController {
     private lazy var totalPriceLabel: UILabel = {
         let label = UILabel()
         label.text = "$1000"
-        label.font = .systemFont(ofSize: 25, weight: .semibold)
+        label.font = .systemFont(ofSize: 22, weight: .bold)
         label.textAlignment = .right
         return label
     }()
@@ -67,7 +67,7 @@ final class CartViewController: UIViewController {
     private lazy var totalLabel: UILabel = {
         let label = UILabel()
         label.text = "Total:"
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .systemFont(ofSize: 22)
         return label
     }()
     
@@ -95,7 +95,7 @@ private extension CartViewController {
         let decrementCartItemTapped = PublishSubject<CartItem>()
         let incrementCartItemTapped = PublishSubject<CartItem>()
         
-        let output = Cart.ViewOutput(checkoutTapped: Observable.of(checkoutButton.rx.tap, footerCheckoutButton.rx.tap).merge(),
+        let output = Cart.ViewOutput(checkoutTapped: footerCheckoutButton.rx.tap.asObservable(),
                                      deleteCartItemTapped: deleteCartItemTapped,
                                      incrementCartItemTapped: incrementCartItemTapped,
                                      decrementCartItemTapped: decrementCartItemTapped)
@@ -142,6 +142,18 @@ private extension CartViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+        let separatorLine: UIView = {
+            let view = UIView()
+            view.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
+            return view
+        }()
+        
+        cartTableView.tableFooterView?.addSubview(separatorLine)
+        separatorLine.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
         cartTableView.tableFooterView?.addSubview(totalLabel)
         totalLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(32)
@@ -151,7 +163,7 @@ private extension CartViewController {
         cartTableView.tableFooterView?.addSubview(totalPriceLabel)
         totalPriceLabel.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-32)
-            make.top.equalToSuperview().offset(32)
+            make.firstBaseline.equalTo(totalLabel.snp.lastBaseline)
         }
         
         cartTableView.tableFooterView?.addSubview(footerCheckoutButton)
@@ -163,12 +175,11 @@ private extension CartViewController {
         }
         
         
-        
-        view.addSubview(checkoutButton)
-        checkoutButton.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(-32)
-            make.size.equalTo(56)
-        }
+//        view.addSubview(checkoutButton)
+//        checkoutButton.snp.makeConstraints { (make) in
+//            make.bottom.right.equalTo(-32)
+//            make.size.equalTo(56)
+//        }
     }
     
     
