@@ -28,7 +28,9 @@ final class CartViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
-        tableView.tableFooterView = UIView()
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 150))
+        footerView.backgroundColor = .systemPink
+        tableView.tableFooterView = footerView
         return tableView
     }()
     
@@ -40,6 +42,33 @@ final class CartViewController: UIViewController {
         button.layer.cornerRadius = 56/2
         button.applyShadow()
         return button
+    }()
+    
+    private let footerCheckoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "creditcard"), for: .normal)
+        button.setTitle("Checkout", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 17, weight: .semibold)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.layer.cornerRadius = 50/2
+        button.applyShadow()
+        return button
+    }()
+    
+    private lazy var totalPriceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "$1000"
+        label.font = .systemFont(ofSize: 25, weight: .semibold)
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private lazy var totalLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Total:"
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        return label
     }()
     
     private let disposeBag = DisposeBag()
@@ -66,7 +95,7 @@ private extension CartViewController {
         let decrementCartItemTapped = PublishSubject<CartItem>()
         let incrementCartItemTapped = PublishSubject<CartItem>()
         
-        let output = Cart.ViewOutput(checkoutTapped: checkoutButton.rx.tap.asObservable(),
+        let output = Cart.ViewOutput(checkoutTapped: Observable.of(checkoutButton.rx.tap, footerCheckoutButton.rx.tap).merge(),
                                      deleteCartItemTapped: deleteCartItemTapped,
                                      incrementCartItemTapped: incrementCartItemTapped,
                                      decrementCartItemTapped: decrementCartItemTapped)
@@ -90,6 +119,19 @@ private extension CartViewController {
                 .disposed(by: cell.rx.reuseBag)
         }
         .disposed(by: disposeBag)
+        
+        input.cartItems
+            .map({ (cartItems) -> Double in
+                cartItems.reduce(0) { (result, cartItem) -> Double in
+                    result + Double(cartItem.count) * cartItem.dish.price
+                }
+            })
+            .map({ (count) -> String in
+                "$\(count)"
+            })
+            .drive(totalPriceLabel.rx.text)
+        .disposed(by: disposeBag)
+        
     }
     
     func setupUI() {
@@ -100,9 +142,31 @@ private extension CartViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+        cartTableView.tableFooterView?.addSubview(totalLabel)
+        totalLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(32)
+            make.top.equalToSuperview().offset(32)
+        }
+        
+        cartTableView.tableFooterView?.addSubview(totalPriceLabel)
+        totalPriceLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-32)
+            make.top.equalToSuperview().offset(32)
+        }
+        
+        cartTableView.tableFooterView?.addSubview(footerCheckoutButton)
+        footerCheckoutButton.snp.makeConstraints { (make) in
+            make.top.equalTo(totalPriceLabel.snp.bottom).offset(16)
+            make.height.equalTo(50)
+            make.width.equalTo(150)
+            make.centerX.equalToSuperview()
+        }
+        
+        
+        
         view.addSubview(checkoutButton)
         checkoutButton.snp.makeConstraints { (make) in
-            make.bottom.right.equalTo(-24)
+            make.bottom.right.equalTo(-32)
             make.size.equalTo(56)
         }
     }
