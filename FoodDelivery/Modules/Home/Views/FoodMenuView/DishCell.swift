@@ -54,7 +54,7 @@ final class DishCell: UITableViewCell {
     
     private lazy var dishNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .semibold)
+        label.font = .systemFont(ofSize: 22, weight: .semibold)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
         label.sizeToFit()
