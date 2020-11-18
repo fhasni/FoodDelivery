@@ -57,7 +57,7 @@ extension HomePresenter: HomePresenterInterface {
     }
     
     func handleAddToCart(dish: Dish) {
-        print("handleAddToCart \(dish.id)")
+        print("DEBUG: handleAddToCart \(dish.id)")
         interactor.addToCart(dish: dish)
     }
     
