@@ -62,6 +62,20 @@
 		2CB93CA9254A51C00063E22F /* HomeWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB93CA2254A51C00063E22F /* HomeWireframe.swift */; };
 		2CCA1525254620D0003B81C2 /* FoodMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA1524254620D0003B81C2 /* FoodMenuView.swift */; };
 		2CCA152725462BFC003B81C2 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCA152625462BFC003B81C2 /* CategoryCell.swift */; };
+		2CCDEDC22565DAC8009C8971 /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCDEDBB2565DAC8009C8971 /* Checkout.storyboard */; };
+		2CCDEDC32565DAC8009C8971 /* CheckoutInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDBC2565DAC8009C8971 /* CheckoutInterfaces.swift */; };
+		2CCDEDC42565DAC8009C8971 /* CheckoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDBD2565DAC8009C8971 /* CheckoutPresenter.swift */; };
+		2CCDEDC52565DAC8009C8971 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDBE2565DAC8009C8971 /* CheckoutViewController.swift */; };
+		2CCDEDC62565DAC8009C8971 /* CheckoutFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDBF2565DAC8009C8971 /* CheckoutFormatter.swift */; };
+		2CCDEDC72565DAC8009C8971 /* CheckoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDC02565DAC8009C8971 /* CheckoutInteractor.swift */; };
+		2CCDEDC82565DAC8009C8971 /* CheckoutWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDC12565DAC8009C8971 /* CheckoutWireframe.swift */; };
+		2CCDEDD32565DAE5009C8971 /* DishDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CCDEDCC2565DAE5009C8971 /* DishDetail.storyboard */; };
+		2CCDEDD42565DAE5009C8971 /* DishDetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDCD2565DAE5009C8971 /* DishDetailInterfaces.swift */; };
+		2CCDEDD52565DAE5009C8971 /* DishDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDCE2565DAE5009C8971 /* DishDetailPresenter.swift */; };
+		2CCDEDD62565DAE5009C8971 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDCF2565DAE5009C8971 /* DishDetailViewController.swift */; };
+		2CCDEDD72565DAE5009C8971 /* DishDetailFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDD02565DAE5009C8971 /* DishDetailFormatter.swift */; };
+		2CCDEDD82565DAE5009C8971 /* DishDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDD12565DAE5009C8971 /* DishDetailInteractor.swift */; };
+		2CCDEDD92565DAE5009C8971 /* DishDetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCDEDD22565DAE5009C8971 /* DishDetailWireframe.swift */; };
 		544C1B887776998DFA91EC6E /* Pods_FoodDeliveryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA1A3AEA41D33E100EAC4CC /* Pods_FoodDeliveryTests.framework */; };
 		A7BEDE478214A82500890B21 /* Pods_FoodDelivery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F34F33687F14AC259FAF84 /* Pods_FoodDelivery.framework */; };
 		B686AA09D91633737F4C71EB /* Pods_FoodDelivery_FoodDeliveryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1714AA176BD0F2180565E275 /* Pods_FoodDelivery_FoodDeliveryUITests.framework */; };
@@ -148,6 +162,20 @@
 		2CB93CA2254A51C00063E22F /* HomeWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWireframe.swift; sourceTree = "<group>"; };
 		2CCA1524254620D0003B81C2 /* FoodMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodMenuView.swift; sourceTree = "<group>"; };
 		2CCA152625462BFC003B81C2 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		2CCDEDBB2565DAC8009C8971 /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
+		2CCDEDBC2565DAC8009C8971 /* CheckoutInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutInterfaces.swift; sourceTree = "<group>"; };
+		2CCDEDBD2565DAC8009C8971 /* CheckoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutPresenter.swift; sourceTree = "<group>"; };
+		2CCDEDBE2565DAC8009C8971 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		2CCDEDBF2565DAC8009C8971 /* CheckoutFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutFormatter.swift; sourceTree = "<group>"; };
+		2CCDEDC02565DAC8009C8971 /* CheckoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutInteractor.swift; sourceTree = "<group>"; };
+		2CCDEDC12565DAC8009C8971 /* CheckoutWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutWireframe.swift; sourceTree = "<group>"; };
+		2CCDEDCC2565DAE5009C8971 /* DishDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DishDetail.storyboard; sourceTree = "<group>"; };
+		2CCDEDCD2565DAE5009C8971 /* DishDetailInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailInterfaces.swift; sourceTree = "<group>"; };
+		2CCDEDCE2565DAE5009C8971 /* DishDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailPresenter.swift; sourceTree = "<group>"; };
+		2CCDEDCF2565DAE5009C8971 /* DishDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
+		2CCDEDD02565DAE5009C8971 /* DishDetailFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailFormatter.swift; sourceTree = "<group>"; };
+		2CCDEDD12565DAE5009C8971 /* DishDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailInteractor.swift; sourceTree = "<group>"; };
+		2CCDEDD22565DAE5009C8971 /* DishDetailWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishDetailWireframe.swift; sourceTree = "<group>"; };
 		5911DA3754B90ACC9DFC38D9 /* Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodDelivery-FoodDeliveryUITests/Pods-FoodDelivery-FoodDeliveryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6AA1A3AEA41D33E100EAC4CC /* Pods_FoodDeliveryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodDeliveryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F9EE9F4A54A81CEE03BE8CC /* Pods-FoodDeliveryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodDeliveryTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodDeliveryTests/Pods-FoodDeliveryTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -276,7 +304,9 @@
 			isa = PBXGroup;
 			children = (
 				2C59F2E6254458ED0046D9E3 /* Home */,
+				2CCDEDBA2565DAA3009C8971 /* DishDetail */,
 				2C6DC25925582BAE006B0DDD /* Cart */,
+				2CCDEDB92565DA84009C8971 /* Checkout */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -488,6 +518,34 @@
 			path = FoodMenuView;
 			sourceTree = "<group>";
 		};
+		2CCDEDB92565DA84009C8971 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDEDBB2565DAC8009C8971 /* Checkout.storyboard */,
+				2CCDEDBC2565DAC8009C8971 /* CheckoutInterfaces.swift */,
+				2CCDEDBD2565DAC8009C8971 /* CheckoutPresenter.swift */,
+				2CCDEDBE2565DAC8009C8971 /* CheckoutViewController.swift */,
+				2CCDEDBF2565DAC8009C8971 /* CheckoutFormatter.swift */,
+				2CCDEDC02565DAC8009C8971 /* CheckoutInteractor.swift */,
+				2CCDEDC12565DAC8009C8971 /* CheckoutWireframe.swift */,
+			);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		2CCDEDBA2565DAA3009C8971 /* DishDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2CCDEDCC2565DAE5009C8971 /* DishDetail.storyboard */,
+				2CCDEDCD2565DAE5009C8971 /* DishDetailInterfaces.swift */,
+				2CCDEDCE2565DAE5009C8971 /* DishDetailPresenter.swift */,
+				2CCDEDCF2565DAE5009C8971 /* DishDetailViewController.swift */,
+				2CCDEDD02565DAE5009C8971 /* DishDetailFormatter.swift */,
+				2CCDEDD12565DAE5009C8971 /* DishDetailInteractor.swift */,
+				2CCDEDD22565DAE5009C8971 /* DishDetailWireframe.swift */,
+			);
+			path = DishDetail;
+			sourceTree = "<group>";
+		};
 		DCAF422B490F4562FE582C95 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,9 +671,11 @@
 				2CACE575254F31FD0088620D /* menu.json in Resources */,
 				2C59F2C3254458930046D9E3 /* LaunchScreen.storyboard in Resources */,
 				2CB93CA3254A51C00063E22F /* Home.storyboard in Resources */,
+				2CCDEDC22565DAC8009C8971 /* Checkout.storyboard in Resources */,
 				2C59F2C0254458930046D9E3 /* Assets.xcassets in Resources */,
 				2C6DC26225582BCB006B0DDD /* Cart.storyboard in Resources */,
 				2C59F2BE254458900046D9E3 /* Main.storyboard in Resources */,
+				2CCDEDD32565DAE5009C8971 /* DishDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,20 +803,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCDEDD42565DAE5009C8971 /* DishDetailInterfaces.swift in Sources */,
 				2CAFC1F42544C9C500625BC3 /* PromotionsView.swift in Sources */,
 				2CB93CA8254A51C00063E22F /* HomeInteractor.swift in Sources */,
 				2C59F2FF25445FD80046D9E3 /* InteractorInterface.swift in Sources */,
 				2C6DC258255777CF006B0DDD /* MemCartRepository.swift in Sources */,
 				2C59F2B7254458900046D9E3 /* AppDelegate.swift in Sources */,
 				2CAFC1FF2544D44900625BC3 /* UIViewController+NavigationBar.swift in Sources */,
+				2CCDEDD82565DAE5009C8971 /* DishDetailInteractor.swift in Sources */,
 				2C6DC26525582BCB006B0DDD /* CartViewController.swift in Sources */,
 				2C59F2FB25445FD80046D9E3 /* BaseWireframe.swift in Sources */,
 				2C59F2FD25445FD80046D9E3 /* PresenterInterface.swift in Sources */,
 				2CB93CA4254A51C00063E22F /* HomeInterfaces.swift in Sources */,
 				2CACE583254F60C10088620D /* UIView+RoundCorners.swift in Sources */,
+				2CCDEDD92565DAE5009C8971 /* DishDetailWireframe.swift in Sources */,
 				2C3BBC4B25619ECD000C54AC /* CartItemCell.swift in Sources */,
+				2CCDEDD72565DAE5009C8971 /* DishDetailFormatter.swift in Sources */,
 				2CCA1525254620D0003B81C2 /* FoodMenuView.swift in Sources */,
 				2CAFC1F92544D30E00625BC3 /* UIViewController+Feedback.swift in Sources */,
+				2CCDEDC62565DAC8009C8971 /* CheckoutFormatter.swift in Sources */,
 				2CAFC1FB2544D34900625BC3 /* UIViewController+Gradiant.swift in Sources */,
 				2C25AB19256580CF00A65E1C /* PromotionCell.swift in Sources */,
 				2CB93CA9254A51C00063E22F /* HomeWireframe.swift in Sources */,
@@ -771,6 +836,7 @@
 				2CACE577254F3B6B0088620D /* Category.swift in Sources */,
 				2C59F2B9254458900046D9E3 /* SceneDelegate.swift in Sources */,
 				2CACE586254F72700088620D /* CardView.swift in Sources */,
+				2CCDEDC42565DAC8009C8971 /* CheckoutPresenter.swift in Sources */,
 				2CACE57B254F3E7F0088620D /* Category+ObjectMapper.swift in Sources */,
 				2CACE579254F3BA50088620D /* Dish.swift in Sources */,
 				2C0742FE2545A593002BE22A /* RestaurentMenuService.swift in Sources */,
@@ -779,16 +845,22 @@
 				2C3BBC42256104EF000C54AC /* Reactive+Reusable.swift in Sources */,
 				2C6DC26725582BCB006B0DDD /* CartInteractor.swift in Sources */,
 				2CACE57D254F3EAF0088620D /* Dish+ObjectMapper.swift in Sources */,
+				2CCDEDC82565DAC8009C8971 /* CheckoutWireframe.swift in Sources */,
 				2CB93CA5254A51C00063E22F /* HomePresenter.swift in Sources */,
 				2C0742FC2545A18E002BE22A /* RemoteMenuRepository.swift in Sources */,
+				2CCDEDC72565DAC8009C8971 /* CheckoutInteractor.swift in Sources */,
+				2CCDEDD62565DAE5009C8971 /* DishDetailViewController.swift in Sources */,
 				2CCA152725462BFC003B81C2 /* CategoryCell.swift in Sources */,
+				2CCDEDD52565DAE5009C8971 /* DishDetailPresenter.swift in Sources */,
 				2CB93CA7254A51C00063E22F /* HomeFormatter.swift in Sources */,
 				2CACE57F254F41510088620D /* StubMenuRepository.swift in Sources */,
 				2C6DC26625582BCB006B0DDD /* CartFormatter.swift in Sources */,
 				2C6DC26325582BCB006B0DDD /* CartInterfaces.swift in Sources */,
 				2C25AB142564A52200A65E1C /* UIView+shadow.swift in Sources */,
 				2C59F2FE25445FD80046D9E3 /* ViewInterface.swift in Sources */,
+				2CCDEDC32565DAC8009C8971 /* CheckoutInterfaces.swift in Sources */,
 				2C6DC253255771A8006B0DDD /* CartRepositoryInterface.swift in Sources */,
+				2CCDEDC52565DAC8009C8971 /* CheckoutViewController.swift in Sources */,
 				2CACE566254CDB860088620D /* MenuRepositoryInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
